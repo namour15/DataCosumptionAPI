@@ -45,8 +45,8 @@ def get_indicators_data():
                     query = f"SELECT ID, Fecha, PM_1, PM2_5, PM_10 FROM ? WHERE Fecha = CONVERT(datetime, ?)"
                     cursor.execute(query,table,formatted_date)
                 else:
-                    query = f"SELECT ID, Fecha, PM_1, PM2_5, PM_10 FROM ? WHERE CAST(Fecha AS DATE) = (SELECT MAX(CAST(Fecha AS DATE))FROM ?)"
-                    cursor.execute(query,table,table)
+                    query = f"SELECT ID, Fecha, PM_1, PM2_5, PM_10 FROM M_UPIITA WHERE CAST(Fecha AS DATE) = (SELECT MAX(CAST(Fecha AS DATE))FROM M_UPIITA)"
+                    cursor.execute(query)
                 rows = cursor.fetchall()
                 
                 if not rows:
