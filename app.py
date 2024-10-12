@@ -11,10 +11,10 @@ def get_db_connection():
     try:
         print("Trying to connect to database...")
         load_dotenv()
-        database = os.environ.get('DATABASE')
-        server = os.environ.get('SERVER')
-        uid = os.environ.get('UID')
-        pwd = os.environ.get('PWD')
+        database = os.environ.get('AZURE_SQL_DATABASE')
+        server = os.environ.get('AZURE_SQL_SERVER')
+        uid = os.environ.get('AZURE_SQL_USER')
+        pwd = os.environ.get('AZURE_SQL_PASSWORD')
         print(database,server,uid,pwd)
         
         connection = pyodbc.connect(f'DRIVER={{SQL Server}};SERVER={server};DATABASE={database};UID={uid};PWD={pwd}')
