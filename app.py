@@ -42,10 +42,11 @@ def get_indicators_data():
                 query = ""
                 if date not in [None, "", []]:
                     formatted_date = datetime.strptime(date,"%Y-%m-%d")
-                    query = f"SELECT ID, Fecha, PM_1, PM2_5, PM_10 FROM {table} WHERE Fecha = CONVERT(datetime,'{date}')" 
+                    query = f"SELECT ID, Fecha, PM_1, PM2_5, PM_10 FROM ? WHERE Fecha = CONVERT(datetime, ?)"
+                    cursor.execute(query,table,formatted_date)
                 else:
-                    query = f"SELECT ID, Fecha, PM_1, PM2_5, PM_10 FROM {table} WHERE CAST(Fecha AS DATE) = (SELECT MAX(CAST(Fecha AS DATE))FROM M_UPIITA)"
-                cursor.execute(query)
+                    query = f"SELECT ID, Fecha, PM_1, PM2_5, PM_10 FROM ? WHERE CAST(Fecha AS DATE) = (SELECT MAX(CAST(Fecha AS DATE))FROM ?)"
+                    cursor.execute(query,table,table)
                 rows = cursor.fetchall()
                 
                 if not rows:
