@@ -17,7 +17,7 @@ def get_db_connection():
         pwd = os.environ.get('AZURE_SQL_PASSWORD')
         print(database,server,uid,pwd)
         
-        connection = pyodbc.connect(f'DRIVER={{SQL Server}};SERVER={server};DATABASE={database};UID={uid};PWD={pwd}')
+        connection = pyodbc.connect(f'DRIVER={{ODBC Driver 18 for SQL Server}};SERVER={server};DATABASE={database};UID={uid};PWD={pwd}')
         print("Connection succeded")
         return connection
     except Exception as ex:
