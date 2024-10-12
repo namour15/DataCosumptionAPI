@@ -36,7 +36,7 @@ def get_indicators_data():
     if connection:
         try:
             indicators = []
-            for table in ['M_UPIITA', 'M_ESCOM', 'M_CDA']:
+            for table in ['[dbo].[M_UPIITA]', '[dbo].[M_ESCOM]', '[dbo].[M_CDA]']:
                 print(client_request)
                 cursor = connection.cursor()
                 query = ""
