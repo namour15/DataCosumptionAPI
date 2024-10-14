@@ -118,9 +118,9 @@
 
   .showcase .superpuesta {
     position: absolute; /* Establece la posición absoluta para que la imagen se pueda posicionar en relación con su contenedor padre */
-    top: 43%; /* Ajusta la posición superior según sea necesario */
-    left: 30%; /* Ajusta la posición izquierda según sea necesario */
-    width: 560px; /* Ajusta el ancho de la imagen */
+    top: 32.5%; /* Ajusta la posición superior según sea necesario */
+    left: 33.5%; /* Ajusta la posición izquierda según sea necesario */
+    width: 580px; /* Ajusta el ancho de la imagen */
     height: auto; /* Ajusta la altura de la imagen de forma automática para mantener la proporción */
     z-index: 2; /* Asegura que la imagen superpuesta esté por encima del fondo */
   }

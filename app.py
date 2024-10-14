@@ -24,8 +24,6 @@ def get_db_connection():
         print(f"Error to reach connection: {ex}")
         return None
 
-
-
 @app.route('/get_indicators_data', methods=['GET'])
 def get_indicators_data():
 
@@ -34,37 +32,42 @@ def get_indicators_data():
     if connection:
         try:
             indicators = []
-            for table in ['[dbo].[M_UPIITA]']:
+            # Agregamos las tres tablas
+            tables = ['[dbo].[M_UPIITA]', '[dbo].[M_ESCOM]', '[dbo].[M_CDA]']
+            
+            for table in tables:
                 cursor = connection.cursor()
                 query = f"SELECT ID, Fecha, PM_1, PM2_5, PM_10 FROM {table}"
                 cursor.execute(query)
                 rows = cursor.fetchall()
                 
                 if not rows:
-                    return []
-                ##de
+                    continue  # Si la tabla no tiene registros, pasa a la siguiente tabla
+
                 pm1 = 0
                 pm2 = 0
                 pm10 = 0
 
                 for row in rows:
-                    pm1 = pm1 + row[2]
-                    pm2 = pm2 + row[3]
-                    pm10 = pm10 + row[4]
+                    pm1 += row[2]
+                    pm2 += row[3]
+                    pm10 += row[4]
 
-                pm1_average = pm1/len(rows)
-                pm2_average = pm2/len(rows)
-                pm10_average = pm10/len(rows)
+                # Calcular los promedios
+                pm1_average = pm1 / len(rows)
+                pm2_average = pm2 / len(rows)
+                pm10_average = pm10 / len(rows)
                 
                 data = {
                     'SOURCE': table,
-                    'DATE' : row[1],
+                    'DATE': row[1],
                     'PM1': pm1_average,
                     'PM25': pm2_average,
                     'PM10': pm10_average
                 }
                 
                 indicators.append(data)
+
             return jsonify(indicators)
 
         except Exception as ex:
