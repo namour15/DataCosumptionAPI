@@ -17,7 +17,7 @@ def get_db_connection():
         pwd = os.environ.get('AZURE_SQL_PASSWORD')
         print(database,server,uid,pwd)
         
-        connection = pyodbc.connect(f'DRIVER={{SQL Server}};SERVER={server};DATABASE={database};UID={uid};PWD={pwd}')
+        connection = pyodbc.connect(f'DRIVER={{ODBC Driver 18 for SQL Server}};SERVER={server};DATABASE={database};UID={uid};PWD={pwd}')
         print("Connection succeded")
         return connection
     except Exception as ex:
@@ -35,7 +35,7 @@ def get_indicators_data():
     if connection:
         try:
             indicators = []
-            for table in ['M_UPIITA', 'M_ESCOM', 'M_CDA']:
+            for table in ['[dbo].[M_UPIITA]', '[dbo].[M_ESCOM]', '[dbo].[M_CDA]']:
                 print(client_request)
                 cursor = connection.cursor()
                 query = f"SELECT ID, Fecha, PM_1, PM2_5, PM_10 FROM {table} ')" 
