@@ -335,6 +335,23 @@
               console.log(data_pm10)
               console.log(data_pm2)
               dibujar(data_pm1,data_pm10,data_pm2)
+
+              data_pm1_ES = Math.round(item.PM1)
+              data_pm10_ES = Math.round(item.PM10)
+              data_pm2_ES = Math.round(item.PM25)
+              console.log(data_pm1_ES)
+              console.log(data_pm10_ES)
+              console.log(data_pm2_ES)
+              dibujar(data_pm1_ES,data_pm10_ES,data_pm2_ES)
+
+              data_pm1_CDA = Math.round(item.PM1)
+              data_pm10_CDA = Math.round(item.PM10)
+              data_pm2_CDA = Math.round(item.PM25)
+              console.log(data_pm1_CDA)
+              console.log(data_pm10_CDA)
+              console.log(data_pm2_CDA)
+              dibujar(data_pm1_CDA,data_pm10_CDA,data_pm2_CDA)
+              
              });
             })
             .catch(error => console.error('Error:', error));
@@ -349,21 +366,6 @@
         backgroundColor: ['#5cb85c', '#d3d3d3'] // Azul y Naranja para UPIITA
       }],
     };
-
-    const dataUbicacionSensoresESCOM = {
-      datasets: [{
-        data: [4, 9], // Ajusta estos datos según tus ubicaciones de sensores
-        backgroundColor: ['#FFA500', '#d3d3d3'] // Azul y Rojo para ESCOM
-      }],
-    };
-
-    const dataUbicacionSensoresCDA = {
-      datasets: [{
-        data: [1, 2], // Ajusta estos datos según tus ubicaciones de sensores
-        backgroundColor: ['#FF4500', '#d3d3d3'] // Azul y Verde para CDA
-      }],
-    };
-
     const dataPM1 = {
       datasets: [{
         data: [data_pm1, 100-data_pm1], // Ajusta estos datos según los niveles de PM1
@@ -383,6 +385,68 @@
     const dataPM10 = {
       datasets: [{
         data: [data_pm10, 100 - data_pm10], // Ajusta estos datos según los niveles de PM10
+        backgroundColor: ['#FF5733', '#d3d3d3']
+      }],
+      labels: ['PM10', '']
+    };
+
+    const dataUbicacionSensoresESCOM = {
+      datasets: [{
+        data: [4, 9], // Ajusta estos datos según tus ubicaciones de sensores
+        backgroundColor: ['#FFA500', '#d3d3d3'] // Azul y Rojo para ESCOM
+      }],
+    };
+
+    const dataPM1_ES = {
+      datasets: [{
+        data: [data_pm1_ES, 100-data_pm1_ES], // Ajusta estos datos según los niveles de PM1
+        backgroundColor: ['#FF5733', '#d3d3d3']
+      }],
+      labels: ['PM1', '']
+    };
+
+    const dataPM25_ES = {
+      datasets: [{
+        data: [data_pm2_ES, 100 - data_pm2_ES], // Ajusta estos datos según los niveles de PM2.5
+        backgroundColor: ['#FFC300', '#d3d3d3']
+      }],
+      labels: ['PM2.5', '']
+    };
+
+    const dataPM10_ES = {
+      datasets: [{
+        data: [data_pm10_ES, 100 - data_pm10_ES], // Ajusta estos datos según los niveles de PM10
+        backgroundColor: ['#FF5733', '#d3d3d3']
+      }],
+      labels: ['PM10', '']
+    };
+
+    const dataUbicacionSensoresCDA = {
+      datasets: [{
+        data: [1, 2], // Ajusta estos datos según tus ubicaciones de sensores
+        backgroundColor: ['#FF4500', '#d3d3d3'] // Azul y Verde para CDA
+      }],
+    };
+
+    const dataPM1_CDA = {
+      datasets: [{
+        data: [data_pm1_CDA, 100-data_pm1_CDA], // Ajusta estos datos según los niveles de PM1
+        backgroundColor: ['#FF5733', '#d3d3d3']
+      }],
+      labels: ['PM1', '']
+    };
+
+    const dataPM25_CDA = {
+      datasets: [{
+        data: [data_pm2_CDA, 100 - data_pm2_CDA], // Ajusta estos datos según los niveles de PM2.5
+        backgroundColor: ['#FFC300', '#d3d3d3']
+      }],
+      labels: ['PM2.5', '']
+    };
+
+    const dataPM10_CDA = {
+      datasets: [{
+        data: [data_pm10_CDA, 100 - data_pm10_CDA], // Ajusta estos datos según los niveles de PM10
         backgroundColor: ['#FF5733', '#d3d3d3']
       }],
       labels: ['PM10', '']
