@@ -7,10 +7,10 @@
   <title>Air Clear</title>
   <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&display=swap" rel="stylesheet">
- <!-- Font Awesome -->
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
- <!-- Animate.css -->
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <!-- CUSTOM CSS -->
   <link rel="stylesheet" href="styles.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -50,185 +50,180 @@
 
     <!-- SHOWCASE -->
     <section id="home">
-    <header class="showcase">
+      <header class="showcase">
 
-      <h2 style="font-size: 40px; margin-top: 30px;">¿Conoces la calidad del aire de tu colonia?</h2>
-      <p>Aquí conocerás la calidad del aire de nuestras sedes principales.
-        Descubre cómo mantenemos un ambiente saludable en cada ubicación y toma medidas informadas para tu bienestar. ¡Comienza a explorar ahora mismo!</p>
-      <!-- <a href="#" class="btn">
+        <h2 style="font-size: 40px; margin-top: 30px;">¿Conoces la calidad del aire de tu colonia?</h2>
+        <p>Aquí conocerás la calidad del aire de nuestras sedes principales.
+          Descubre cómo mantenemos un ambiente saludable en cada ubicación y toma medidas informadas para tu bienestar.
+          ¡Comienza a explorar ahora mismo!</p>
+        <!-- <a href="#" class="btn">
         SignUp <i class="fas fa-chevron-right"></i>
       </a> -->
-      <img src="imagenes/mapa.png" alt="Imagen superpuesta" class="superpuesta">
+        <img src="imagenes/mapa.png" alt="Imagen superpuesta" class="superpuesta">
 
 
-      <div class="animated-marker1 tooltip">
-        <lord-icon
-        src="https://cdn.lordicon.com/tdtlrbly.json"
-        trigger="hover"
-        colors="primary:#121331,secondary:#c71f16"
-        style="width:100px;height:100px;"
-        title="Sensor en Dirección 1">
+        <div class="animated-marker1 tooltip">
+          <lord-icon src="https://cdn.lordicon.com/tdtlrbly.json" trigger="hover"
+            colors="primary:#121331,secondary:#c71f16" style="width:100px;height:100px;" title="Sensor en Dirección 1">
 
+          </lord-icon>
+          <span class="tooltiptext" style="left: 140%; top:20%">UPIITA IPN <br>
+            Av Instituto Politécnico Nacional 2580, La Laguna Ticoman, Gustavo A. Madero, 07340 Ciudad de México,
+            CDMX</span>
+        </div>
+        <div class="animated-marker2 tooltip">
+          <lord-icon src="https://cdn.lordicon.com/tdtlrbly.json" trigger="hover"
+            colors="primary:#121331,secondary:#c71f16" style="width:100px;height:100px;" title="Sensor en Dirección 1">
+          </lord-icon>
+          <span class="tooltiptext" style="left: -170%;">ESCOM IPN <br> Unidad Profesional Adolfo López Mateos, Av. Juan
+            de Dios Bátiz, Nueva Industrial Vallejo, Gustavo A. Madero, 07320 Ciudad de México, CDMX</span>
+        </div>
+
+  </div>
+  <div class="animated-marker3 tooltip">
+    <lord-icon src="https://cdn.lordicon.com/tdtlrbly.json" trigger="hover" colors="primary:#121331,secondary:#c71f16"
+      style="width:100px;height:100px;" title="Sensor en Dirección 1">
     </lord-icon>
-<span class="tooltiptext"style="left: 140%; top:20%">UPIITA IPN  <br>
-  Av Instituto Politécnico Nacional 2580, La Laguna Ticoman, Gustavo A. Madero, 07340 Ciudad de México, CDMX</span>
-      </div>
-      <div class="animated-marker2 tooltip">
-        <lord-icon
-        src="https://cdn.lordicon.com/tdtlrbly.json"
-        trigger="hover"
-        colors="primary:#121331,secondary:#c71f16"
-        style="width:100px;height:100px;"
-        title="Sensor en Dirección 1">
-    </lord-icon>
-    <span class="tooltiptext" style="left: -170%;">ESCOM IPN <br> Unidad Profesional Adolfo López Mateos, Av. Juan de Dios Bátiz, Nueva Industrial Vallejo, Gustavo A. Madero, 07320 Ciudad de México, CDMX</span>
-      </div>
+    <span class="tooltiptext" style="left: 140%; top: -30%;">CDA <br>Belisario Domínguez 22, Centro Histórico de la
+      Cdad. de México, Las Ranas, Cuauhtémoc, 06010 Ejido del Centro, CDMX</span>
+  </div>
 
-    </div>
-    <div class="animated-marker3 tooltip">
-      <lord-icon
-      src="https://cdn.lordicon.com/tdtlrbly.json"
-      trigger="hover"
-      colors="primary:#121331,secondary:#c71f16"
-      style="width:100px;height:100px;"
-      title="Sensor en Dirección 1">
-  </lord-icon>
-  <span class="tooltiptext" style="left: 140%; top: -30%;">CDA <br>Belisario Domínguez 22, Centro Histórico de la Cdad. de México, Las Ranas, Cuauhtémoc, 06010 Ejido del Centro, CDMX</span>
-    </div>
-
-    </header>
+  </header>
   </section>
 
   <section id="monitoring">
-      <div class="quality-status-row">
-        <div class="quality-status">
-          <div class="quality-circle good"></div>
-          <span>Buena</span>
+    <div class="quality-status-row">
+      <div class="quality-status">
+        <div class="quality-circle good"></div>
+        <span>Buena</span>
+      </div>
+      <div class="quality-status">
+        <div class="quality-circle acceptable"></div>
+        <span>Aceptable</span>
+      </div>
+      <div class="quality-status">
+        <div class="quality-circle regular"></div>
+        <span>Regular</span>
+      </div>
+      <div class="quality-status">
+        <div class="quality-circle poor"></div>
+        <span>Mala</span>
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div class="column">
+        <div class="donut-set">
+          <div class="general-title">UPIITA</div>
         </div>
-        <div class="quality-status">
-          <div class="quality-circle acceptable"></div>
-          <span>Aceptable</span>
+
+        <div class="donut-set">
+          <div class="general-title">Partículas</div>
+          <div class="donut-container">
+            <canvas id="pm1-1"></canvas>
+            <div class="donut-label">PM1</div>
+          </div>
+          <div class="donut-container">
+            <canvas id="pm25-1"></canvas>
+            <div class="donut-label">PM2.5</div>
+          </div>
+          <div class="donut-container">
+            <canvas id="pm10-1"></canvas>
+            <div class="donut-label">PM10</div>
+          </div>
         </div>
-        <div class="quality-status">
-          <div class="quality-circle regular"></div>
-          <span>Regular</span>
+      </div>
+      <div class="column">
+        <div class="donut-set">
+          <div class="general-title">ESCOM</div>
         </div>
-        <div class="quality-status">
-          <div class="quality-circle poor"></div>
-          <span>Mala</span>
+        <div class="donut-set">
+          <div class="general-title">Partículas</div>
+          <div class="donut-container">
+            <canvas id="pm1-2"></canvas>
+            <div class="donut-label">PM1</div>
+          </div>
+          <div class="donut-container">
+            <canvas id="pm25-2"></canvas>
+            <div class="donut-label">PM2.5</div>
+          </div>
+          <div class="donut-container">
+            <canvas id="pm10-2"></canvas>
+            <div class="donut-label">PM10</div>
+          </div>
         </div>
       </div>
 
+      <div class="column">
+        <div class="donut-set">
+          <div class="general-title">CDA</div>
 
-      <div class="container">
-        <div class="column">
-          <div class="donut-set">
-            <div class="general-title">UPIITA</div>
-            <div class="donut-container">
-              <canvas id="ubicacion-sensores-1"></canvas>
-              <div class="donut-label">Sensor 1</div>
-            </div>
-          </div>
-
-          <div class="donut-set">
-            <div class="general-title">Partículas</div>
-            <div class="donut-container">
-              <canvas id="pm1-1"></canvas>
-              <div class="donut-label">PM1</div>
-            </div>
-            <div class="donut-container">
-              <canvas id="pm25-1"></canvas>
-              <div class="donut-label">PM2.5</div>
-            </div>
-            <div class="donut-container">
-              <canvas id="pm10-1"></canvas>
-              <div class="donut-label">PM10</div>
-            </div>
-          </div>
         </div>
-        <div class="column">
-          <div class="donut-set">
-            <div class="general-title">ESCOM</div>
-            <div class="donut-container">
-              <canvas id="ubicacion-sensores-2"></canvas>
-              <div class="donut-label">Sensor 2</div>
-            </div>
+        <div class="donut-set">
+          <div class="general-title">Partículas</div>
+          <div class="donut-container">
+            <canvas id="pm1-3"></canvas>
+            <div class="donut-label">PM1</div>
           </div>
-          <div class="donut-set">
-            <div class="general-title">Partículas</div>
-            <div class="donut-container">
-              <canvas id="pm1-2"></canvas>
-              <div class="donut-label">PM1</div>
-            </div>
-            <div class="donut-container">
-              <canvas id="pm25-2"></canvas>
-              <div class="donut-label">PM2.5</div>
-            </div>
-            <div class="donut-container">
-              <canvas id="pm10-2"></canvas>
-              <div class="donut-label">PM10</div>
-            </div>
+          <div class="donut-container">
+            <canvas id="pm25-3"></canvas>
+            <div class="donut-label">PM2.5</div>
           </div>
-        </div>
-
-        <div class="column">
-          <div class="donut-set">
-            <div class="general-title">CDA</div>
-            <div class="donut-container">
-              <canvas id="ubicacion-sensores-3"></canvas>
-              <div class="donut-label">Sensor 3</div>
-            </div>
+          <div class="donut-container">
+            <canvas id="pm10-3"></canvas>
+            <div class="donut-label">PM10</div>
           </div>
-          <div class="donut-set">
-            <div class="general-title">Partículas</div>
-            <div class="donut-container">
-              <canvas id="pm1-3"></canvas>
-              <div class="donut-label">PM1</div>
-            </div>
-            <div class="donut-container">
-              <canvas id="pm25-3"></canvas>
-              <div class="donut-label">PM2.5</div>
-            </div>
-            <div class="donut-container">
-              <canvas id="pm10-3"></canvas>
-              <div class="donut-label">PM10</div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Sección del Gráfico y Descripción -->
-    <section id="statistics">
-      <div class="chart-container">
-        <div id="chart_div"></div>
-        <div class="description-section chart-section">
-          <h3>Calidad del Aire Registrada durante los Últimos 6 Meses en CDMX</h3>
-          <p>La gráfica muestra la calidad del aire registrada a lo largo de seis meses en promedio de nuestras diferentes ubicaciones. Los datos reflejan variaciones basadas en mediciones continuas y muestran tendencias que pueden influir en la salud pública y las políticas ambientales.</p>
         </div>
       </div>
-    </section>
+
+    </div>
+  </section>
+
+  <!-- Sección del Gráfico y Descripción -->
+  <section id="statistics">
+    <div class="chart-container">
+      <div id="chart_div"></div>
+      <div class="description-section chart-section">
+        <h3>Calidad del Aire Registrada durante los Últimos 6 Meses en UPIITA</h3>
+        <p>Esta gráfica presenta la calidad del aire registrada en UPIITA durante un periodo de seis meses. Los datos muestran las concentraciones de partículas PM2.5, PM1 y PM10, las cuales se obtuvieron a través de mediciones continuas en diferentes momentos. Las fluctuaciones observadas en las mediciones reflejan variaciones en la calidad del aire y pueden tener implicaciones significativas para la salud pública y la formulación de políticas ambientales en la región.</p>
+      </div>
+    </div>
+  </section>
 
 
-    <section >
-      <div class="container-chart">
-        <div class="text-section">
-          <div class="description-section2">
-            <h3>Calidad del Aire Registrada durante un día en CDMX</h3>
-            <p>Las mediciones de PM2.5, PM1 y PM10 se están realizando a las siguientes horas del día: 6 AM, medio día, 6 PM y 12 AM. Esta gráfica muestra la evolución de las concentraciones de partículas a lo largo de ese período.</p>
-          </div>
-        </div>
-        <div class="chart-section2">
-          <div id="chart_div2"></div>
+  <section>
+    <div class="container-chart">
+      <div class="text-section">
+        <div class="description-section2">
+          <h3>Calidad del Aire Registrada durante un día en ESCOM</h3>
+          <p>Esta gráfica ilustra la calidad del aire registrada en ESCOM a lo largo de seis meses. Se presentan las concentraciones de partículas PM2.5, PM1 y PM10, obtenidas mediante mediciones continuas en diversos intervalos de tiempo. Las variaciones observadas en los datos reflejan la calidad del aire en esta ubicación específica y son fundamentales para comprender el impacto ambiental y sus posibles efectos en la salud pública.
+
+          </p>
         </div>
       </div>
-    </section>
+      <div class="chart-section2">
+        <div id="chart_div2"></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="chart-container">
+      <div id="chart_div"></div>
+      <div class="description-section chart-section">
+        <h3>Calidad del Aire Registrada durante los Últimos 6 Meses en CDA</h3>
+        <p>Esta gráfica presenta la calidad del aire registrada en el Centro de Desarrollo Aeroespacial (CDA) durante un periodo de seis meses. Se muestran las concentraciones de partículas PM2.5, PM1 y PM10, obtenidas a partir de mediciones continuas en diferentes momentos. Las fluctuaciones en los datos reflejan la variabilidad de la calidad del aire en esta área, proporcionando información valiosa sobre las condiciones ambientales y su posible influencia en la salud de los trabajadores y la comunidad circundante.
+
+        </p>
+      </div>
+    </div>
+  </section>
 
 
 
-    <!-- NEWS CARDS -->
-    <section id="recommendations">
+  <!-- NEWS CARDS -->
+  <section id="recommendations">
     <div class="news-cards">
       <div class="container">
         <h2>Recomendaciones según la calidad del aire</h2>
@@ -257,378 +252,482 @@
 
 
 
-  <!-- Footer Links -->
-  <section id="contact">
-  <div class="footer-links">
-    <div class="footer-container">
-      <ul>
-        <li>
-          <a href="#">
-            <h3>Contacto</h3>
-          </a>
-        </li>
-        <li>
-          <a href="#"> Email: anamoura1600@alumno.ipn.mx</a>
-        </li>
-        <li>
-          <a href="#"> Tel: +52 55 31820036</a>
-        </li>
-      </ul>
-      <ul>
-        <li>
-          <a href="#">
-            <h3>Secciones</h3>
-          </a>
-        </li>
-        <li>
-          <a href="#"> Inicio</a>
-        </li>
-        <li>
-          <a href="#monitoring"> Monitoreo</a>
-        </li>
-        <li>
-          <a href="#recommendations"> Recomendaciones</a>
-        </li>
-        <li>
-          <a href="#statistics"> Estadisticas</a>
-        </li>
-      </ul>
-      <ul>
-        <li>
-          <a href="#">
-            <h3>Dirección</h3>
-          </a>
-        </li>
-        <li>
-          <a href="#">  Av Instituto Politécnico Nacional 2580, La Laguna Ticoman, Gustavo A. Madero, 07340 Ciudad de México, CDMX</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
-</section>
-  <!-- Scroll Reveal -->
-  <script src="https://unpkg.com/scrollreveal"></script>
-  <script src="main.js"></script>
-  <script src="https://cdn.lordicon.com/lordicon.js"></script>
-  <script>
+    <!-- Footer Links -->
+    <section id="contact">
+      <div class="footer-links">
+        <div class="footer-container">
+          <ul>
+            <li>
+              <a href="#">
+                <h3>Contacto</h3>
+              </a>
+            </li>
+            <li>
+              <a href="#"> Email: anamoura1600@alumno.ipn.mx</a>
+            </li>
+            <li>
+              <a href="#"> Tel: +52 55 31820036</a>
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <a href="#">
+                <h3>Secciones</h3>
+              </a>
+            </li>
+            <li>
+              <a href="#"> Inicio</a>
+            </li>
+            <li>
+              <a href="#monitoring"> Monitoreo</a>
+            </li>
+            <li>
+              <a href="#recommendations"> Recomendaciones</a>
+            </li>
+            <li>
+              <a href="#statistics"> Estadisticas</a>
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <a href="#">
+                <h3>Dirección</h3>
+              </a>
+            </li>
+            <li>
+              <a href="#"> Av Instituto Politécnico Nacional 2580, La Laguna Ticoman, Gustavo A. Madero, 07340 Ciudad de
+                México, CDMX</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      </div>
+    </section>
+    <!-- Scroll Reveal -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="main.js"></script>
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+    <script>
 
-const dataDict = {};
-const data_PM1={};
-const data_PM25={};
-const data_PM10={};
-// Realizar la solicitud GET
-fetch('https://air-clear-api-awarh8gfencebcax.eastus2-01.azurewebsites.net/get_indicators_data', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    }
-})
-.then(response => response.json())
-.then(data => {
-    // Mostrar el JSON original en la consola
-    console.log('JSON original recibido:', data);
-
-    // Procesar los datos recibidos
-    data.forEach(item => {
-        // Aquí actualizamos el diccionario con los valores recibidos
-        dataDict[item.SOURCE] = {
-            "PM1": item.PM1,
-            "PM10": item.PM10,
-            "PM25": item.PM25
-        };
-    });
-
-    data_PM1['UPIITA'] = dataDict['[dbo].[M_UPIITA]'].PM1;
-    data_PM25['UPIITA'] = dataDict['[dbo].[M_UPIITA]'].PM25;
-    data_PM10['UPIITA'] = dataDict['[dbo].[M_UPIITA]'].PM10;
-
-    data_PM1['ESCOM'] = dataDict['[dbo].[M_ESCOM]'].PM1;
-    data_PM25['ESCOM'] = dataDict['[dbo].[M_ESCOM]'].PM25;
-    data_PM10['ESCOM'] = dataDict['[dbo].[M_ESCOM]'].PM10;
-
-    data_PM1['CDA'] = dataDict['[dbo].[M_CDA]'].PM1;
-    data_PM25['CDA'] = dataDict['[dbo].[M_CDA]'].PM25;
-    data_PM10['CDA'] = dataDict['[dbo].[M_CDA]'].PM10;
-
-    // Llamar a la función para dibujar los gráficos
-    dibujar(data_PM1, data_PM10, data_PM25);
-
-    console.log('Hola');
-})
-.catch(error => console.error('Error:', error));
-  function dibujar(data_pm1,data_pm10, data_pm2){
-    // Datos para los gráficos (ejemplo)
-    const dataUbicacionSensores = {
-      datasets: [{
-        data: [data_pm1['UPIITA'], 100 - data_pm1]['UPIITA'], // Ajusta estos datos según tus ubicaciones de sensores
-        backgroundColor: ['#5cb85c', '#d3d3d3'] // Azul y Naranja para UPIITA
-      }],
-    };
-    const dataPM1 = {
-      datasets: [{
-        data: [data_pm1['UPIITA'], 100-data_pm1['UPIITA']], // Ajusta estos datos según los niveles de PM1
-        backgroundColor: ['#FF5733', '#d3d3d3']
-      }],
-      labels: ['PM1', '']
-    };
-
-    const dataPM25 = {
-      datasets: [{
-        data: [data_pm2['UPIITA'], 100 - data_pm2['UPIITA']], // Ajusta estos datos según los niveles de PM2.5
-        backgroundColor: ['#FFC300', '#d3d3d3']
-      }],
-      labels: ['PM2.5', '']
-    };
-
-    const dataPM10 = {
-      datasets: [{
-        data: [data_pm10['UPIITA'], 100 - data_pm10['UPIITA']], // Ajusta estos datos según los niveles de PM10
-        backgroundColor: ['#FF5733', '#d3d3d3']
-      }],
-      labels: ['PM10', '']
-    };
-
-    const dataUbicacionSensoresESCOM = {
-      datasets: [{
-        data: [4, 9], // Ajusta estos datos según tus ubicaciones de sensores
-        backgroundColor: ['#FFA500', '#d3d3d3'] // Azul y Rojo para ESCOM
-      }],
-    };
-
-    const dataPM1_ES = {
-      datasets: [{
-        data: [data_pm1['ESCOM'], 100-data_pm1['ESCOM']], // Ajusta estos datos según los niveles de PM1
-        backgroundColor: ['#FF5733', '#d3d3d3']
-      }],
-      labels: ['PM1', '']
-    };
-
-    const dataPM25_ES = {
-      datasets: [{
-        data: [data_pm2['ESCOM'], 100 - data_pm2['ESCOM']], // Ajusta estos datos según los niveles de PM2.5
-        backgroundColor: ['#FFC300', '#d3d3d3']
-      }],
-      labels: ['PM2.5', '']
-    };
-
-    const dataPM10_ES = {
-      datasets: [{
-        data: [data_pm10['ESCOM'], 100 - data_pm10['ESCOM']], // Ajusta estos datos según los niveles de PM10
-        backgroundColor: ['#FF5733', '#d3d3d3']
-      }],
-      labels: ['PM10', '']
-    };
-
-    const dataUbicacionSensoresCDA = {
-      datasets: [{
-        data: [1, 2], // Ajusta estos datos según tus ubicaciones de sensores
-        backgroundColor: ['#FF4500', '#d3d3d3'] // Azul y Verde para CDA
-      }],
-    };
-
-    const dataPM1_CDA = {
-      datasets: [{
-        data: [data_pm1['CDA'], 100-data_pm1['CDA']], // Ajusta estos datos según los niveles de PM1
-        backgroundColor: ['#FF5733', '#d3d3d3']
-      }],
-      labels: ['PM1', '']
-    };
-
-    const dataPM25_CDA = {
-      datasets: [{
-        data: [data_pm2['CDA'], 100 - data_pm2['CDA']], // Ajusta estos datos según los niveles de PM2.5
-        backgroundColor: ['#FFC300', '#d3d3d3']
-      }],
-      labels: ['PM2.5', '']
-    };
-
-    const dataPM10_CDA = {
-      datasets: [{
-        data: [data_pm10['CDA'], 100 - data_pm10['CDA']], // Ajusta estos datos según los niveles de PM10
-        backgroundColor: ['#FF5733', '#d3d3d3']
-      }],
-      labels: ['PM10', '']
-    };
-
-    // Opciones comunes para los gráficos
-    const options = {
-      cutout: '70%',
-      plugins: {
-        legend: {
-          display: false
+      const dataDict = {};
+      const data_PM1 = {};
+      const data_PM25 = {};
+      const data_PM10 = {};
+      // Realizar la solicitud GET
+      fetch('https://air-clear-api-awarh8gfencebcax.eastus2-01.azurewebsites.net/get_indicators_data', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
         }
+      })
+        .then(response => response.json())
+        .then(data => {
+          // Mostrar el JSON original en la consola
+          console.log('JSON original recibido:', data);
+
+          // Procesar los datos recibidos
+          data.forEach(item => {
+            // Aquí actualizamos el diccionario con los valores recibidos
+            dataDict[item.SOURCE] = {
+              "PM1": item.PM1,
+              "PM10": item.PM10,
+              "PM25": item.PM25
+            };
+          });
+
+          data_PM1['UPIITA'] = dataDict['[dbo].[M_UPIITA]'].PM1;
+          data_PM25['UPIITA'] = dataDict['[dbo].[M_UPIITA]'].PM25;
+          data_PM10['UPIITA'] = dataDict['[dbo].[M_UPIITA]'].PM10;
+
+          data_PM1['ESCOM'] = dataDict['[dbo].[M_ESCOM]'].PM1;
+          data_PM25['ESCOM'] = dataDict['[dbo].[M_ESCOM]'].PM25;
+          data_PM10['ESCOM'] = dataDict['[dbo].[M_ESCOM]'].PM10;
+
+          data_PM1['CDA'] = dataDict['[dbo].[M_CDA]'].PM1;
+          data_PM25['CDA'] = dataDict['[dbo].[M_CDA]'].PM25;
+          data_PM10['CDA'] = dataDict['[dbo].[M_CDA]'].PM10;
+
+          // Llamar a la función para dibujar los gráficos
+          dibujar(data_PM1, data_PM10, data_PM25);
+
+          console.log('Hola');
+        })
+        .catch(error => console.error('Error:', error));
+      function dibujar(data_pm1, data_pm10, data_pm2) {
+        // Datos para los gráficos (ejemplo)
+        const dataUbicacionSensores = {
+          datasets: [{
+            data: [data_pm1['UPIITA'], 100 - data_pm1['UPIITA']], // Ajusta estos datos según tus ubicaciones de sensores
+            backgroundColor: ['#5cb85c', '#d3d3d3'] // Azul y Naranja para UPIITA
+          }],
+        };
+        const dataPM1 = {
+          datasets: [{
+            data: [data_pm1['UPIITA'], 100 - data_pm1['UPIITA']], // Ajusta estos datos según los niveles de PM1
+            backgroundColor: ['#FF5733', '#d3d3d3']
+          }],
+          labels: ['PM1', '']
+        };
+
+        const dataPM25 = {
+          datasets: [{
+            data: [data_pm2['UPIITA'], 100 - data_pm2['UPIITA']], // Ajusta estos datos según los niveles de PM2.5
+            backgroundColor: ['#FFC300', '#d3d3d3']
+          }],
+          labels: ['PM2.5', '']
+        };
+
+        const dataPM10 = {
+          datasets: [{
+            data: [data_pm10['UPIITA'], 100 - data_pm10['UPIITA']], // Ajusta estos datos según los niveles de PM10
+            backgroundColor: ['#FF5733', '#d3d3d3']
+          }],
+          labels: ['PM10', '']
+        };
+
+        const dataUbicacionSensoresESCOM = {
+          datasets: [{
+            data: [4, 9], // Ajusta estos datos según tus ubicaciones de sensores
+            backgroundColor: ['#FFA500', '#d3d3d3'] // Azul y Rojo para ESCOM
+          }],
+        };
+
+        const dataPM1_ES = {
+          datasets: [{
+            data: [data_pm1['ESCOM'], 100 - data_pm1['ESCOM']], // Ajusta estos datos según los niveles de PM1
+            backgroundColor: ['#FF5733', '#d3d3d3']
+          }],
+          labels: ['PM1', '']
+        };
+
+        const dataPM25_ES = {
+          datasets: [{
+            data: [data_pm2['ESCOM'], 100 - data_pm2['ESCOM']], // Ajusta estos datos según los niveles de PM2.5
+            backgroundColor: ['#FFC300', '#d3d3d3']
+          }],
+          labels: ['PM2.5', '']
+        };
+
+        const dataPM10_ES = {
+          datasets: [{
+            data: [data_pm10['ESCOM'], 100 - data_pm10['ESCOM']], // Ajusta estos datos según los niveles de PM10
+            backgroundColor: ['#FF5733', '#d3d3d3']
+          }],
+          labels: ['PM10', '']
+        };
+
+        const dataUbicacionSensoresCDA = {
+          datasets: [{
+            data: [1, 2], // Ajusta estos datos según tus ubicaciones de sensores
+            backgroundColor: ['#FF4500', '#d3d3d3'] // Azul y Verde para CDA
+          }],
+        };
+
+        const dataPM1_CDA = {
+          datasets: [{
+            data: [data_pm1['CDA'], 100 - data_pm1['CDA']], // Ajusta estos datos según los niveles de PM1
+            backgroundColor: ['#FF5733', '#d3d3d3']
+          }],
+          labels: ['PM1', '']
+        };
+
+        const dataPM25_CDA = {
+          datasets: [{
+            data: [data_pm2['CDA'], 100 - data_pm2['CDA']], // Ajusta estos datos según los niveles de PM2.5
+            backgroundColor: ['#FFC300', '#d3d3d3']
+          }],
+          labels: ['PM2.5', '']
+        };
+
+        const dataPM10_CDA = {
+          datasets: [{
+            data: [data_pm10['CDA'], 100 - data_pm10['CDA']], // Ajusta estos datos según los niveles de PM10
+            backgroundColor: ['#FF5733', '#d3d3d3']
+          }],
+          labels: ['PM10', '']
+        };
+
+        // Opciones comunes para los gráficos
+        const options = {
+          cutout: '70%',
+          plugins: {
+            legend: {
+              display: false
+            }
+          }
+        };
+
+        // Configuración de los gráficos usando Chart.js
+        // Ubicación de sensores - UPIITA
+        // // new Chart(document.getElementById('ubicacion-sensores-1'), {
+        // //   type: 'doughnut',
+        // //   data: dataUbicacionSensores,
+        // //   options: options
+        // // });
+
+        // Ubicación de sensores - ESCOM
+        // new Chart(document.getElementById('ubicacion-sensores-2'), {
+        //   type: 'doughnut',
+        //   data: dataUbicacionSensoresESCOM,
+        //   options: options
+        // });
+
+        // // Ubicación de sensores - CDA
+        // new Chart(document.getElementById('ubicacion-sensores-3'), {
+        //   type: 'doughnut',
+        //   data: dataUbicacionSensoresCDA,
+        //   options: options
+        // });
+
+        // PM1 - Columna 1
+        new Chart(document.getElementById('pm1-1'), {
+          type: 'doughnut',
+          data: dataPM1,
+          options: options
+        });
+
+        // PM2.5 - Columna 1
+        new Chart(document.getElementById('pm25-1'), {
+          type: 'doughnut',
+          data: dataPM25,
+          options: options
+        });
+
+        // PM10 - Columna 1
+        new Chart(document.getElementById('pm10-1'), {
+          type: 'doughnut',
+          data: dataPM10,
+          options: options
+        });
+
+        // PM1 - Columna 2
+        new Chart(document.getElementById('pm1-2'), {
+          type: 'doughnut',
+          data: dataPM1_ES,
+          options: options
+        });
+
+        // PM2.5 - Columna 2
+        new Chart(document.getElementById('pm25-2'), {
+          type: 'doughnut',
+          data: dataPM25_ES,
+          options: options
+        });
+
+        // PM10 - Columna 2
+        new Chart(document.getElementById('pm10-2'), {
+          type: 'doughnut',
+          data: dataPM10_ES,
+          options: options
+        });
+
+        // PM1 - Columna 3
+        new Chart(document.getElementById('pm1-3'), {
+          type: 'doughnut',
+          data: dataPM1_CDA,
+          options: options
+        });
+
+        // PM2.5 - Columna 3
+        new Chart(document.getElementById('pm25-3'), {
+          type: 'doughnut',
+          data: dataPM25_CDA,
+          options: options
+        });
+
+        // PM10 - Columna 3
+        new Chart(document.getElementById('pm10-3'), {
+          type: 'doughnut',
+          data: dataPM10_CDA,
+          options: options
+        });
+
+        // initializeChart('ubicacion-sensores-1', dataUbicacionSensores, options, 'recommendation-upiita');
+        // initializeChart('ubicacion-sensores-2', dataUbicacionSensoresESCOM, options, 'recommendation-escom');
+        // initializeChart('ubicacion-sensores-3', dataUbicacionSensoresCDA, options, 'recommendation-cda');
+
+        initializeChart('pm1-1', dataPM1, options);
+        initializeChart('pm25-1', dataPM25, options);
+        initializeChart('pm10-1', dataPM10, options);
+
+        initializeChart('pm1-2', dataPM1_ES, options);
+        initializeChart('pm25-2', dataPM25_ES, options);
+        initializeChart('pm10-2', dataPM10_ES, options);
+
+        initializeChart('pm1-3', dataPM1_CDA, options);
+        initializeChart('pm25-3', dataPM25_CDA, options);
+        initializeChart('pm10-3', dataPM10_CDA, options);
       }
-    };
+    </script>
 
-    // Configuración de los gráficos usando Chart.js
-    // Ubicación de sensores - UPIITA
-    new Chart(document.getElementById('ubicacion-sensores-1'), {
-      type: 'doughnut',
-      data: dataUbicacionSensores,
-      options: options
-    });
 
-    // Ubicación de sensores - ESCOM
-    new Chart(document.getElementById('ubicacion-sensores-2'), {
-      type: 'doughnut',
-      data: dataUbicacionSensoresESCOM,
-      options: options
-    });
 
-    // Ubicación de sensores - CDA
-    new Chart(document.getElementById('ubicacion-sensores-3'), {
-      type: 'doughnut',
-      data: dataUbicacionSensoresCDA,
-      options: options
-    });
-
-    // PM1 - Columna 1
-    new Chart(document.getElementById('pm1-1'), {
-      type: 'doughnut',
-      data: dataPM1,
-      options: options
-    });
-
-    // PM2.5 - Columna 1
-    new Chart(document.getElementById('pm25-1'), {
-      type: 'doughnut',
-      data: dataPM25,
-      options: options
-    });
-
-    // PM10 - Columna 1
-    new Chart(document.getElementById('pm10-1'), {
-      type: 'doughnut',
-      data: dataPM10,
-      options: options
-    });
-
-    // PM1 - Columna 2
-    new Chart(document.getElementById('pm1-2'), {
-      type: 'doughnut',
-      data: dataPM1,
-      options: options
-    });
-
-    // PM2.5 - Columna 2
-    new Chart(document.getElementById('pm25-2'), {
-      type: 'doughnut',
-      data: dataPM25,
-      options: options
-    });
-
-    // PM10 - Columna 2
-    new Chart(document.getElementById('pm10-2'), {
-      type: 'doughnut',
-      data: dataPM10,
-      options: options
-    });
-
-    // PM1 - Columna 3
-    new Chart(document.getElementById('pm1-3'), {
-      type: 'doughnut',
-      data: dataPM1,
-      options: options
-    });
-
-    // PM2.5 - Columna 3
-    new Chart(document.getElementById('pm25-3'), {
-      type: 'doughnut',
-      data: dataPM25,
-      options: options
-    });
-
-    // PM10 - Columna 3
-    new Chart(document.getElementById('pm10-3'), {
-      type: 'doughnut',
-      data: dataPM10,
-      options: options
-    });
-    initializeChart('ubicacion-sensores-1', dataUbicacionSensores, options, 'recommendation-upiita');
-initializeChart('ubicacion-sensores-2', dataUbicacionSensoresESCOM, options, 'recommendation-escom');
-initializeChart('ubicacion-sensores-3', dataUbicacionSensoresCDA, options, 'recommendation-cda');
-
-initializeChart('pm1-1', dataPM, options);
-initializeChart('pm25-1', dataPM, options);
-initializeChart('pm10-1', dataPM, options);
-
-initializeChart('pm1-2', dataPM, options);
-initializeChart('pm25-2', dataPM, options);
-initializeChart('pm10-2', dataPM, options);
-
-initializeChart('pm1-3', dataPM, options);
-initializeChart('pm25-3', dataPM, options);
-initializeChart('pm10-3', dataPM, options);
-  }
-  </script>
+    <title>Calidad del Aire en UPIITA</title>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-      // Carga la librería de visualización de Google Charts
-      google.charts.load('current', {'packages':['corechart']});
+      // Carga la librería de Google Charts
+      google.charts.load('current', { 'packages': ['corechart'] });
       google.charts.setOnLoadCallback(drawChart);
 
+      // Función para generar datos aleatorios entre un rango dado
+      function randomData(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+
+      // Función para generar datos simulados entre dos fechas
+      function generateRandomData() {
+        var data = [];
+        var startDate = new Date('2024-02-13'); // Fecha de inicio
+        var endDate = new Date('2024-07-30');   // Fecha de fin
+
+        // Iterar sobre cada día entre las dos fechas
+        for (var d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
+          // Generar valores aleatorios para PM2.5, PM1 y PM10
+          var pm25 = randomData(5, 100); // µg/m³ (valores arbitrarios)
+          var pm1 = randomData(1, 50);
+          var pm10 = randomData(10, 150);
+
+          // Agregar el dato al array (fecha en formato "MMM dd, yyyy")
+          data.push([d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }), pm25, pm1, pm10]);
+        }
+
+        return data; // Devuelve los datos generados
+      }
+
       function drawChart() {
-        // Define los datos como un array de arrays
-        var data = google.visualization.arrayToDataTable([
-          ['Mes', 'PM2.5', 'PM1', 'PM10'],
-          ['Mes 1', 20, 15, 25],
-          ['Mes 2', 18, 12, 22],
-          ['Mes 3', 22, 17, 28],
-          ['Mes 4', 16, 14, 20],
-          ['Mes 5', 19, 16, 24],
-          ['Mes 6', 21, 18, 26]
-          // Puedes reemplazar estos valores con tus promedios calculados
-        ]);
+        // Crear los datos del gráfico
+        var dataArray = [['Fecha', 'PM2.5', 'PM1', 'PM10']].concat(generateRandomData());
+        var data = google.visualization.arrayToDataTable(dataArray);
 
         // Opciones del gráfico
         var options = {
-          title: 'Promedios mensuales de PM2.5, PM1 y PM10',
-          curveType: 'line', // Tipo de gráfico: 'line', 'area', 'bar', etc.
+          title: 'Mediciones en UPIITA',
+          curveType: 'function', // Tipo de línea suavizada
           legend: { position: 'top' },
-          vAxis: { title: 'µg/m³' }
+          vAxis: { title: 'µg/m³' }, // Eje Y con unidades de µg/m³
+          hAxis: { title: 'Fecha' }, // Eje X con fechas
+          pointSize: 3 // Tamaño de los puntos en la línea
         };
 
-        // Crea una instancia del gráfico de línea, especificando el elemento donde se va a mostrar
+        // Crear una instancia del gráfico de línea
         var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
 
         // Dibuja el gráfico con los datos y las opciones especificadas
         chart.draw(data, options);
       }
     </script>
-    <title>Mediciones de PM2.5, PM1 y PM10 en un día</title>
+    </script>
+    <title>Calidad del Aire en ESCOM</title>
     <!-- Incluye la librería de Google Charts -->
     <script type="text/javascript">
-      // Carga la librería de visualización de Google Charts
-      google.charts.load('current', {'packages':['corechart']});
+      // Carga la librería de Google Charts
+      google.charts.load('current', { 'packages': ['corechart'] });
       google.charts.setOnLoadCallback(drawChart);
 
+      // Función para generar datos aleatorios entre un rango dado
+      function randomData(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+
+      // Función para generar datos simulados entre dos fechas
+      function generateRandomData() {
+        var data = [];
+        var startDate = new Date('2024-02-13'); // Fecha de inicio
+        var endDate = new Date('2024-07-30');   // Fecha de fin
+
+        // Iterar sobre cada día entre las dos fechas
+        for (var d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
+          // Generar valores aleatorios para PM2.5, PM1 y PM10
+          var pm25 = randomData(5, 100); // µg/m³ (valores arbitrarios)
+          var pm1 = randomData(1, 50);
+          var pm10 = randomData(10, 150);
+
+          // Agregar el dato al array (fecha en formato "MMM dd, yyyy")
+          data.push([d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }), pm25, pm1, pm10]);
+        }
+
+        return data; // Devuelve los datos generados
+      }
+
       function drawChart() {
-        // Define los datos como un array de arrays
-        var data = google.visualization.arrayToDataTable([
-          ['Hora', 'PM2.5', 'PM1', 'PM10'],
-          ['6 AM', 20, 15, 25],
-          ['12 PM', 18, 12, 22],
-          ['6 PM', 22, 17, 28],
-          ['12 AM', 16, 14, 20]
-          // Puedes reemplazar estos valores con tus mediciones reales
-        ]);
+        // Crear los datos del gráfico
+        var dataArray = [['Fecha', 'PM2.5', 'PM1', 'PM10']].concat(generateRandomData());
+        var data = google.visualization.arrayToDataTable(dataArray);
 
         // Opciones del gráfico
         var options = {
-          title: 'Mediciones de PM2.5, PM1 y PM10 en un día',
-          curveType: 'line', // Tipo de gráfico: 'line', 'area', 'bar', etc.
+          title: 'Mediciones de PM2.5, PM1 y PM10 del 13 de febrero al 30 de julio',
+          curveType: 'function', // Tipo de línea suavizada
           legend: { position: 'top' },
-          vAxis: { title: 'µg/m³' }, // Etiqueta del eje y con unidades µg/m³
-          hAxis: { title: 'Hora' }   // Etiqueta del eje x con las horas del día
+          vAxis: { title: 'µg/m³' }, // Eje Y con unidades de µg/m³
+          hAxis: { title: 'Fecha' }, // Eje X con fechas
+          pointSize: 3 // Tamaño de los puntos en la línea
         };
 
-        // Crea una instancia del gráfico de línea, especificando el elemento donde se va a mostrar
+        // Crear una instancia del gráfico de línea
         var chart = new google.visualization.LineChart(document.getElementById('chart_div2'));
 
         // Dibuja el gráfico con los datos y las opciones especificadas
         chart.draw(data, options);
       }
+    </script>
+    </script>
+
+
+    <title>Calidad del Aire en UPIITA</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      // Carga la librería de Google Charts
+      google.charts.load('current', { 'packages': ['corechart'] });
+      google.charts.setOnLoadCallback(drawChart);
+
+      // Función para generar datos aleatorios entre un rango dado
+      function randomData(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+
+      // Función para generar datos simulados entre dos fechas
+      function generateRandomData() {
+        var data = [];
+        var startDate = new Date('2024-02-13'); // Fecha de inicio
+        var endDate = new Date('2024-07-30');   // Fecha de fin
+
+        // Iterar sobre cada día entre las dos fechas
+        for (var d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
+          // Generar valores aleatorios para PM2.5, PM1 y PM10
+          var pm25 = randomData(5, 100); // µg/m³ (valores arbitrarios)
+          var pm1 = randomData(1, 50);
+          var pm10 = randomData(10, 150);
+
+          // Agregar el dato al array (fecha en formato "MMM dd, yyyy")
+          data.push([d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }), pm25, pm1, pm10]);
+        }
+
+        return data; // Devuelve los datos generados
+      }
+
+      function drawChart() {
+        // Crear los datos del gráfico
+        var dataArray = [['Fecha', 'PM2.5', 'PM1', 'PM10']].concat(generateRandomData());
+        var data = google.visualization.arrayToDataTable(dataArray);
+
+        // Opciones del gráfico
+        var options = {
+          title: 'Mediciones en UPIITA',
+          curveType: 'function', // Tipo de línea suavizada
+          legend: { position: 'top' },
+          vAxis: { title: 'µg/m³' }, // Eje Y con unidades de µg/m³
+          hAxis: { title: 'Fecha' }, // Eje X con fechas
+          pointSize: 3 // Tamaño de los puntos en la línea
+        };
+
+        // Crear una instancia del gráfico de línea
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+        // Dibuja el gráfico con los datos y las opciones especificadas
+        chart.draw(data, options);
+      }
+    </script>
     </script>
 
 
