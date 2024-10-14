@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Air Clear</title>
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&display=swap" rel="stylesheet">
+ <!-- Font Awesome -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+ <!-- Animate.css -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <!-- CUSTOM CSS -->
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+  <div class="menu-btn">
+    <i class="fas fa-bars fa-2x"></i>
+  </div>
+  <div class="header">
+    <nav class="titulo">
+
+
+    </nav>
+
+  </div>
+  <div id="map"></div>
+
+
+  <div class="container">
+    <!-- Navigation -->
+    <nav class="nav-main">
+      <!-- Brand -->
+      <img src="imagenes/logo.png" alt="Air Clear Logo" class="nav-brand">
+      <!-- Left Nav -->
+      <ul class="nav-menu">
+        <li><a href="#home">Inicio</a></li>
+        <li><a href="#monitoring">Monitoreo</a></li>
+        <li><a href="#recommendations">Recomendaciones</a></li>
+        <li><a href="#statistics">Estadísticas</a></li>
+        <li><a href="#contact">Contacto</a></li>
+      </ul>
+
+    </nav>
+    <hr>
+
+    <!-- SHOWCASE -->
+    <section id="home">
+    <header class="showcase">
+
+      <h2 style="font-size: 40px; margin-top: 30px;">¿Conoces la calidad del aire de tu colonia?</h2>
+      <p>Aquí conocerás la calidad del aire de nuestras sedes principales.
+        Descubre cómo mantenemos un ambiente saludable en cada ubicación y toma medidas informadas para tu bienestar. ¡Comienza a explorar ahora mismo!</p>
+      <!-- <a href="#" class="btn">
+        SignUp <i class="fas fa-chevron-right"></i>
+      </a> -->
+      <img src="imagenes/mapa.png" alt="Imagen superpuesta" class="superpuesta">
+
+
+      <div class="animated-marker1 tooltip">
+        <lord-icon
+        src="https://cdn.lordicon.com/tdtlrbly.json"
+        trigger="hover"
+        colors="primary:#121331,secondary:#c71f16"
+        style="width:100px;height:100px;"
+        title="Sensor en Dirección 1">
+
+    </lord-icon>
+<span class="tooltiptext"style="left: 140%; top:20%">UPIITA IPN  <br>
+  Av Instituto Politécnico Nacional 2580, La Laguna Ticoman, Gustavo A. Madero, 07340 Ciudad de México, CDMX</span>
+      </div>
+      <div class="animated-marker2 tooltip">
+        <lord-icon
+        src="https://cdn.lordicon.com/tdtlrbly.json"
+        trigger="hover"
+        colors="primary:#121331,secondary:#c71f16"
+        style="width:100px;height:100px;"
+        title="Sensor en Dirección 1">
+    </lord-icon>
+    <span class="tooltiptext" style="left: -170%;">ESCOM IPN <br> Unidad Profesional Adolfo López Mateos, Av. Juan de Dios Bátiz, Nueva Industrial Vallejo, Gustavo A. Madero, 07320 Ciudad de México, CDMX</span>
+      </div>
+
+    </div>
+    <div class="animated-marker3 tooltip">
+      <lord-icon
+      src="https://cdn.lordicon.com/tdtlrbly.json"
+      trigger="hover"
+      colors="primary:#121331,secondary:#c71f16"
+      style="width:100px;height:100px;"
+      title="Sensor en Dirección 1">
+  </lord-icon>
+  <span class="tooltiptext" style="left: 140%; top: -30%;">CDA <br>Belisario Domínguez 22, Centro Histórico de la Cdad. de México, Las Ranas, Cuauhtémoc, 06010 Ejido del Centro, CDMX</span>
+    </div>
+
+    </header>
+  </section>
+
+  <section id="monitoring">
+      <div class="quality-status-row">
+        <div class="quality-status">
+          <div class="quality-circle good"></div>
+          <span>Buena</span>
+        </div>
+        <div class="quality-status">
+          <div class="quality-circle acceptable"></div>
+          <span>Aceptable</span>
+        </div>
+        <div class="quality-status">
+          <div class="quality-circle regular"></div>
+          <span>Regular</span>
+        </div>
+        <div class="quality-status">
+          <div class="quality-circle poor"></div>
+          <span>Mala</span>
+        </div>
+      </div>
+
+
+      <div class="container">
+        <div class="column">
+          <div class="donut-set">
+            <div class="general-title">UPIITA</div>
+            <div class="donut-container">
+              <canvas id="ubicacion-sensores-1"></canvas>
+              <div class="donut-label">Sensor 1</div>
+            </div>
+          </div>
+
+          <div class="donut-set">
+            <div class="general-title">Partículas</div>
+            <div class="donut-container">
+              <canvas id="pm1-1"></canvas>
+              <div class="donut-label">PM1</div>
+            </div>
+            <div class="donut-container">
+              <canvas id="pm25-1"></canvas>
+              <div class="donut-label">PM2.5</div>
+            </div>
+            <div class="donut-container">
+              <canvas id="pm10-1"></canvas>
+              <div class="donut-label">PM10</div>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="donut-set">
+            <div class="general-title">ESCOM</div>
+            <div class="donut-container">
+              <canvas id="ubicacion-sensores-2"></canvas>
+              <div class="donut-label">Sensor 2</div>
+            </div>
+          </div>
+          <div class="donut-set">
+            <div class="general-title">Partículas</div>
+            <div class="donut-container">
+              <canvas id="pm1-2"></canvas>
+              <div class="donut-label">PM1</div>
+            </div>
+            <div class="donut-container">
+              <canvas id="pm25-2"></canvas>
+              <div class="donut-label">PM2.5</div>
+            </div>
+            <div class="donut-container">
+              <canvas id="pm10-2"></canvas>
+              <div class="donut-label">PM10</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="donut-set">
+            <div class="general-title">CDA</div>
+            <div class="donut-container">
+              <canvas id="ubicacion-sensores-3"></canvas>
+              <div class="donut-label">Sensor 3</div>
+            </div>
+          </div>
+          <div class="donut-set">
+            <div class="general-title">Partículas</div>
+            <div class="donut-container">
+              <canvas id="pm1-3"></canvas>
+              <div class="donut-label">PM1</div>
+            </div>
+            <div class="donut-container">
+              <canvas id="pm25-3"></canvas>
+              <div class="donut-label">PM2.5</div>
+            </div>
+            <div class="donut-container">
+              <canvas id="pm10-3"></canvas>
+              <div class="donut-label">PM10</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Sección del Gráfico y Descripción -->
+    <section id="statistics">
+      <div class="chart-container">
+        <div id="chart_div"></div>
+        <div class="description-section chart-section">
+          <h3>Calidad del Aire Registrada durante los Últimos 6 Meses en CDMX</h3>
+          <p>La gráfica muestra la calidad del aire registrada a lo largo de seis meses en promedio de nuestras diferentes ubicaciones. Los datos reflejan variaciones basadas en mediciones continuas y muestran tendencias que pueden influir en la salud pública y las políticas ambientales.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <section >
+      <div class="container-chart">
+        <div class="text-section">
+          <div class="description-section2">
+            <h3>Calidad del Aire Registrada durante un día en CDMX</h3>
+            <p>Las mediciones de PM2.5, PM1 y PM10 se están realizando a las siguientes horas del día: 6 AM, medio día, 6 PM y 12 AM. Esta gráfica muestra la evolución de las concentraciones de partículas a lo largo de ese período.</p>
+          </div>
+        </div>
+        <div class="chart-section2">
+          <div id="chart_div2"></div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- NEWS CARDS -->
+    <section id="recommendations">
+    <div class="news-cards">
+      <div class="container">
+        <h2>Recomendaciones según la calidad del aire</h2>
+        <div id="recommendation-cards" class="cards-container">
+          <div class="card">
+            <img src="imagenes/8.png" alt="Recomendación 1">
+
+          </div>
+          <div class="card">
+            <img src="imagenes/7.png" alt="Recomendación 2">
+
+          </div>
+          <div class="card">
+            <img src="imagenes/6.png" alt="Recomendación 3">
+
+          </div>
+          <div class="card">
+            <img src="imagenes/5.png" alt="Recomendación 4">
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+  <!-- Footer Links -->
+  <section id="contact">
+  <div class="footer-links">
+    <div class="footer-container">
+      <ul>
+        <li>
+          <a href="#">
+            <h3>Contacto</h3>
+          </a>
+        </li>
+        <li>
+          <a href="#"> Email: anamoura1600@alumno.ipn.mx</a>
+        </li>
+        <li>
+          <a href="#"> Tel: +52 55 31820036</a>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <a href="#">
+            <h3>Secciones</h3>
+          </a>
+        </li>
+        <li>
+          <a href="#"> Inicio</a>
+        </li>
+        <li>
+          <a href="#monitoring"> Monitoreo</a>
+        </li>
+        <li>
+          <a href="#recommendations"> Recomendaciones</a>
+        </li>
+        <li>
+          <a href="#statistics"> Estadisticas</a>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <a href="#">
+            <h3>Dirección</h3>
+          </a>
+        </li>
+        <li>
+          <a href="#">  Av Instituto Politécnico Nacional 2580, La Laguna Ticoman, Gustavo A. Madero, 07340 Ciudad de México, CDMX</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+  <!-- Scroll Reveal -->
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="main.js"></script>
+  <script src="https://cdn.lordicon.com/lordicon.js"></script>
+  <script>
+    data_pm1 = 0
+    data_pm2 = 0
+    data_pm10 = 0
+
+
+            // Realizar la solicitud POST
+            fetch('https://air-clear-api-awarh8gfencebcax.eastus2-01.azurewebsites.net/get_indicators_data', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+             //   drawChart(data);
+             data.forEach(item => {
+              data_pm1 = Math.round(item.PM1)
+              data_pm10 = Math.round(item.PM10)
+              data_pm2 = Math.round(item.PM25)
+              console.log(data_pm1)
+              console.log(data_pm10)
+              console.log(data_pm2)
+              dibujar(data_pm1,data_pm10,data_pm2)
+             });
+            })
+            .catch(error => console.error('Error:', error));
+        
+
+        
+  function dibujar(data_pm1,data_pm10, data_pm2){
+    // Datos para los gráficos (ejemplo)
+    const dataUbicacionSensores = {
+      datasets: [{
+        data: [data_pm1, 100 - data_pm1], // Ajusta estos datos según tus ubicaciones de sensores
+        backgroundColor: ['#5cb85c', '#d3d3d3'] // Azul y Naranja para UPIITA
+      }],
+    };
+
+    const dataUbicacionSensoresESCOM = {
+      datasets: [{
+        data: [4, 9], // Ajusta estos datos según tus ubicaciones de sensores
+        backgroundColor: ['#FFA500', '#d3d3d3'] // Azul y Rojo para ESCOM
+      }],
+    };
+
+    const dataUbicacionSensoresCDA = {
+      datasets: [{
+        data: [1, 2], // Ajusta estos datos según tus ubicaciones de sensores
+        backgroundColor: ['#FF4500', '#d3d3d3'] // Azul y Verde para CDA
+      }],
+    };
+
+    const dataPM1 = {
+      datasets: [{
+        data: [data_pm1, 100-data_pm1], // Ajusta estos datos según los niveles de PM1
+        backgroundColor: ['#FF5733', '#d3d3d3']
+      }],
+      labels: ['PM1', '']
+    };
+
+    const dataPM25 = {
+      datasets: [{
+        data: [data_pm2, 100 - data_pm2], // Ajusta estos datos según los niveles de PM2.5
+        backgroundColor: ['#FFC300', '#d3d3d3']
+      }],
+      labels: ['PM2.5', '']
+    };
+
+    const dataPM10 = {
+      datasets: [{
+        data: [data_pm10, 100 - data_pm10], // Ajusta estos datos según los niveles de PM10
+        backgroundColor: ['#FF5733', '#d3d3d3']
+      }],
+      labels: ['PM10', '']
+    };
+
+    // Opciones comunes para los gráficos
+    const options = {
+      cutout: '70%',
+      plugins: {
+        legend: {
+          display: false
+        }
+      }
+    };
+
+    // Configuración de los gráficos usando Chart.js
+    // Ubicación de sensores - UPIITA
+    new Chart(document.getElementById('ubicacion-sensores-1'), {
+      type: 'doughnut',
+      data: dataUbicacionSensores,
+      options: options
+    });
+
+    // Ubicación de sensores - ESCOM
+    new Chart(document.getElementById('ubicacion-sensores-2'), {
+      type: 'doughnut',
+      data: dataUbicacionSensoresESCOM,
+      options: options
+    });
+
+    // Ubicación de sensores - CDA
+    new Chart(document.getElementById('ubicacion-sensores-3'), {
+      type: 'doughnut',
+      data: dataUbicacionSensoresCDA,
+      options: options
+    });
+
+    // PM1 - Columna 1
+    new Chart(document.getElementById('pm1-1'), {
+      type: 'doughnut',
+      data: dataPM1,
+      options: options
+    });
+
+    // PM2.5 - Columna 1
+    new Chart(document.getElementById('pm25-1'), {
+      type: 'doughnut',
+      data: dataPM25,
+      options: options
+    });
+
+    // PM10 - Columna 1
+    new Chart(document.getElementById('pm10-1'), {
+      type: 'doughnut',
+      data: dataPM10,
+      options: options
+    });
+
+    // PM1 - Columna 2
+    new Chart(document.getElementById('pm1-2'), {
+      type: 'doughnut',
+      data: dataPM1,
+      options: options
+    });
+
+    // PM2.5 - Columna 2
+    new Chart(document.getElementById('pm25-2'), {
+      type: 'doughnut',
+      data: dataPM25,
+      options: options
+    });
+
+    // PM10 - Columna 2
+    new Chart(document.getElementById('pm10-2'), {
+      type: 'doughnut',
+      data: dataPM10,
+      options: options
+    });
+
+    // PM1 - Columna 3
+    new Chart(document.getElementById('pm1-3'), {
+      type: 'doughnut',
+      data: dataPM1,
+      options: options
+    });
+
+    // PM2.5 - Columna 3
+    new Chart(document.getElementById('pm25-3'), {
+      type: 'doughnut',
+      data: dataPM25,
+      options: options
+    });
+
+    // PM10 - Columna 3
+    new Chart(document.getElementById('pm10-3'), {
+      type: 'doughnut',
+      data: dataPM10,
+      options: options
+    });
+    initializeChart('ubicacion-sensores-1', dataUbicacionSensores, options, 'recommendation-upiita');
+initializeChart('ubicacion-sensores-2', dataUbicacionSensoresESCOM, options, 'recommendation-escom');
+initializeChart('ubicacion-sensores-3', dataUbicacionSensoresCDA, options, 'recommendation-cda');
+
+initializeChart('pm1-1', dataPM, options);
+initializeChart('pm25-1', dataPM, options);
+initializeChart('pm10-1', dataPM, options);
+
+initializeChart('pm1-2', dataPM, options);
+initializeChart('pm25-2', dataPM, options);
+initializeChart('pm10-2', dataPM, options);
+
+initializeChart('pm1-3', dataPM, options);
+initializeChart('pm25-3', dataPM, options);
+initializeChart('pm10-3', dataPM, options);
+  }
+  </script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      // Carga la librería de visualización de Google Charts
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        // Define los datos como un array de arrays
+        var data = google.visualization.arrayToDataTable([
+          ['Mes', 'PM2.5', 'PM1', 'PM10'],
+          ['Mes 1', 20, 15, 25],
+          ['Mes 2', 18, 12, 22],
+          ['Mes 3', 22, 17, 28],
+          ['Mes 4', 16, 14, 20],
+          ['Mes 5', 19, 16, 24],
+          ['Mes 6', 21, 18, 26]
+          // Puedes reemplazar estos valores con tus promedios calculados
+        ]);
+
+        // Opciones del gráfico
+        var options = {
+          title: 'Promedios mensuales de PM2.5, PM1 y PM10',
+          curveType: 'line', // Tipo de gráfico: 'line', 'area', 'bar', etc.
+          legend: { position: 'top' },
+          vAxis: { title: 'µg/m³' }
+        };
+
+        // Crea una instancia del gráfico de línea, especificando el elemento donde se va a mostrar
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+        // Dibuja el gráfico con los datos y las opciones especificadas
+        chart.draw(data, options);
+      }
+    </script>
+    <title>Mediciones de PM2.5, PM1 y PM10 en un día</title>
+    <!-- Incluye la librería de Google Charts -->
+    <script type="text/javascript">
+      // Carga la librería de visualización de Google Charts
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        // Define los datos como un array de arrays
+        var data = google.visualization.arrayToDataTable([
+          ['Hora', 'PM2.5', 'PM1', 'PM10'],
+          ['6 AM', 20, 15, 25],
+          ['12 PM', 18, 12, 22],
+          ['6 PM', 22, 17, 28],
+          ['12 AM', 16, 14, 20]
+          // Puedes reemplazar estos valores con tus mediciones reales
+        ]);
+
+        // Opciones del gráfico
+        var options = {
+          title: 'Mediciones de PM2.5, PM1 y PM10 en un día',
+          curveType: 'line', // Tipo de gráfico: 'line', 'area', 'bar', etc.
+          legend: { position: 'top' },
+          vAxis: { title: 'µg/m³' }, // Etiqueta del eje y con unidades µg/m³
+          hAxis: { title: 'Hora' }   // Etiqueta del eje x con las horas del día
+        };
+
+        // Crea una instancia del gráfico de línea, especificando el elemento donde se va a mostrar
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div2'));
+
+        // Dibuja el gráfico con los datos y las opciones especificadas
+        chart.draw(data, options);
+      }
+    </script>
+
+
+</body>
+
+
+</html>
