@@ -65,7 +65,7 @@ def get_indicators_data():
                 }
                 
                 indicators.append(data)
-            return indicators
+            return jsonify(indicators)
 
         except Exception as ex:
             print(f"Error to execute SQL Query: {ex}")
