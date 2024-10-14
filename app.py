@@ -34,7 +34,7 @@ def get_indicators_data():
     if connection:
         try:
             indicators = []
-            for table in ['[dbo].[M_UPIITA]', '[dbo].[M_ESCOM]', '[dbo].[M_CDA]']:
+            for table in ['[dbo].[M_UPIITA]']:
                 cursor = connection.cursor()
                 query = f"SELECT ID, Fecha, PM_1, PM2_5, PM_10 FROM {table}"
                 cursor.execute(query)
