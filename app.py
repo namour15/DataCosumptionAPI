@@ -28,7 +28,6 @@ def get_db_connection():
 
 @app.route('/get_indicators_data', methods=['GET'])
 def get_indicators_data():
-    client_request = request.get_json()
 
     connection = get_db_connection()
 
@@ -36,9 +35,8 @@ def get_indicators_data():
         try:
             indicators = []
             for table in ['[dbo].[M_UPIITA]', '[dbo].[M_ESCOM]', '[dbo].[M_CDA]']:
-                print(client_request)
                 cursor = connection.cursor()
-                query = f"SELECT ID, Fecha, PM_1, PM2_5, PM_10 FROM {table} ')" 
+                query = f"SELECT ID, Fecha, PM_1, PM2_5, PM_10 FROM {table}"
                 cursor.execute(query)
                 rows = cursor.fetchall()
                 
