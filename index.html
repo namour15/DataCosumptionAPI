@@ -312,63 +312,62 @@
   <script src="main.js"></script>
   <script src="https://cdn.lordicon.com/lordicon.js"></script>
   <script>
-    data_pm1 = 0
-    data_pm2 = 0
-    data_pm10 = 0
 
+const dataDict = {};
+const data_PM1={};
+const data_PM25={};
+const data_PM10={};
+// Realizar la solicitud GET
+fetch('https://air-clear-api-awarh8gfencebcax.eastus2-01.azurewebsites.net/get_indicators_data', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    }
+})
+.then(response => response.json())
+.then(data => {
+    // Mostrar el JSON original en la consola
+    console.log('JSON original recibido:', data);
 
-            // Realizar la solicitud POST
-            fetch('https://air-clear-api-awarh8gfencebcax.eastus2-01.azurewebsites.net/get_indicators_data', {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-             //   drawChart(data);
-             data.forEach(item => {
-              data_pm1 = Math.round(item.PM1)
-              data_pm10 = Math.round(item.PM10)
-              data_pm2 = Math.round(item.PM25)
-              console.log(data_pm1)
-              console.log(data_pm10)
-              console.log(data_pm2)
-              dibujar(data_pm1,data_pm10,data_pm2)
+    // Procesar los datos recibidos
+    data.forEach(item => {
+        // Aquí actualizamos el diccionario con los valores recibidos
+        dataDict[item.SOURCE] = {
+            "PM1": item.PM1,
+            "PM10": item.PM10,
+            "PM25": item.PM25
+        };
+    });
 
-              data_pm1_ES = Math.round(item.PM1)
-              data_pm10_ES = Math.round(item.PM10)
-              data_pm2_ES = Math.round(item.PM25)
-              console.log(data_pm1_ES)
-              console.log(data_pm10_ES)
-              console.log(data_pm2_ES)
-              dibujar(data_pm1_ES,data_pm10_ES,data_pm2_ES)
+    data_PM1['UPIITA'] = dataDict['[dbo].[M_UPIITA]'].PM1;
+    data_PM25['UPIITA'] = dataDict['[dbo].[M_UPIITA]'].PM25;
+    data_PM10['UPIITA'] = dataDict['[dbo].[M_UPIITA]'].PM10;
 
-              data_pm1_CDA = Math.round(item.PM1)
-              data_pm10_CDA = Math.round(item.PM10)
-              data_pm2_CDA = Math.round(item.PM25)
-              console.log(data_pm1_CDA)
-              console.log(data_pm10_CDA)
-              console.log(data_pm2_CDA)
-              dibujar(data_pm1_CDA,data_pm10_CDA,data_pm2_CDA)
-              
-             });
-            })
-            .catch(error => console.error('Error:', error));
-        
+    data_PM1['ESCOM'] = dataDict['[dbo].[M_ESCOM]'].PM1;
+    data_PM25['ESCOM'] = dataDict['[dbo].[M_ESCOM]'].PM25;
+    data_PM10['ESCOM'] = dataDict['[dbo].[M_ESCOM]'].PM10;
 
-        
+    data_PM1['CDA'] = dataDict['[dbo].[M_CDA]'].PM1;
+    data_PM25['CDA'] = dataDict['[dbo].[M_CDA]'].PM25;
+    data_PM10['CDA'] = dataDict['[dbo].[M_CDA]'].PM10;
+
+    // Llamar a la función para dibujar los gráficos
+    dibujar(data_PM1, data_PM10, data_PM25);
+
+    console.log('Hola');
+})
+.catch(error => console.error('Error:', error));
   function dibujar(data_pm1,data_pm10, data_pm2){
     // Datos para los gráficos (ejemplo)
     const dataUbicacionSensores = {
       datasets: [{
-        data: [data_pm1, 100 - data_pm1], // Ajusta estos datos según tus ubicaciones de sensores
+        data: [data_pm1['UPIITA'], 100 - data_pm1]['UPIITA'], // Ajusta estos datos según tus ubicaciones de sensores
         backgroundColor: ['#5cb85c', '#d3d3d3'] // Azul y Naranja para UPIITA
       }],
     };
     const dataPM1 = {
       datasets: [{
-        data: [data_pm1, 100-data_pm1], // Ajusta estos datos según los niveles de PM1
+        data: [data_pm1['UPIITA'], 100-data_pm1['UPIITA']], // Ajusta estos datos según los niveles de PM1
         backgroundColor: ['#FF5733', '#d3d3d3']
       }],
       labels: ['PM1', '']
@@ -376,7 +375,7 @@
 
     const dataPM25 = {
       datasets: [{
-        data: [data_pm2, 100 - data_pm2], // Ajusta estos datos según los niveles de PM2.5
+        data: [data_pm2['UPIITA'], 100 - data_pm2['UPIITA']], // Ajusta estos datos según los niveles de PM2.5
         backgroundColor: ['#FFC300', '#d3d3d3']
       }],
       labels: ['PM2.5', '']
@@ -384,7 +383,7 @@
 
     const dataPM10 = {
       datasets: [{
-        data: [data_pm10, 100 - data_pm10], // Ajusta estos datos según los niveles de PM10
+        data: [data_pm10['UPIITA'], 100 - data_pm10['UPIITA']], // Ajusta estos datos según los niveles de PM10
         backgroundColor: ['#FF5733', '#d3d3d3']
       }],
       labels: ['PM10', '']
@@ -399,7 +398,7 @@
 
     const dataPM1_ES = {
       datasets: [{
-        data: [data_pm1_ES, 100-data_pm1_ES], // Ajusta estos datos según los niveles de PM1
+        data: [data_pm1['ESCOM'], 100-data_pm1['ESCOM']], // Ajusta estos datos según los niveles de PM1
         backgroundColor: ['#FF5733', '#d3d3d3']
       }],
       labels: ['PM1', '']
@@ -407,7 +406,7 @@
 
     const dataPM25_ES = {
       datasets: [{
-        data: [data_pm2_ES, 100 - data_pm2_ES], // Ajusta estos datos según los niveles de PM2.5
+        data: [data_pm2['ESCOM'], 100 - data_pm2['ESCOM']], // Ajusta estos datos según los niveles de PM2.5
         backgroundColor: ['#FFC300', '#d3d3d3']
       }],
       labels: ['PM2.5', '']
@@ -415,7 +414,7 @@
 
     const dataPM10_ES = {
       datasets: [{
-        data: [data_pm10_ES, 100 - data_pm10_ES], // Ajusta estos datos según los niveles de PM10
+        data: [data_pm10['ESCOM'], 100 - data_pm10['ESCOM']], // Ajusta estos datos según los niveles de PM10
         backgroundColor: ['#FF5733', '#d3d3d3']
       }],
       labels: ['PM10', '']
@@ -430,7 +429,7 @@
 
     const dataPM1_CDA = {
       datasets: [{
-        data: [data_pm1_CDA, 100-data_pm1_CDA], // Ajusta estos datos según los niveles de PM1
+        data: [data_pm1['CDA'], 100-data_pm1['CDA']], // Ajusta estos datos según los niveles de PM1
         backgroundColor: ['#FF5733', '#d3d3d3']
       }],
       labels: ['PM1', '']
@@ -438,7 +437,7 @@
 
     const dataPM25_CDA = {
       datasets: [{
-        data: [data_pm2_CDA, 100 - data_pm2_CDA], // Ajusta estos datos según los niveles de PM2.5
+        data: [data_pm2['CDA'], 100 - data_pm2['CDA']], // Ajusta estos datos según los niveles de PM2.5
         backgroundColor: ['#FFC300', '#d3d3d3']
       }],
       labels: ['PM2.5', '']
@@ -446,7 +445,7 @@
 
     const dataPM10_CDA = {
       datasets: [{
-        data: [data_pm10_CDA, 100 - data_pm10_CDA], // Ajusta estos datos según los niveles de PM10
+        data: [data_pm10['CDA'], 100 - data_pm10['CDA']], // Ajusta estos datos según los niveles de PM10
         backgroundColor: ['#FF5733', '#d3d3d3']
       }],
       labels: ['PM10', '']
