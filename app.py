@@ -60,7 +60,7 @@ def get_indicators_data():
                     'SOURCE': table,
                     'DATE' : row[1],
                     'PM1': pm1_average,
-                    'PM2.5': pm2_average,
+                    'PM25': pm2_average,
                     'PM10': pm10_average
                 }
                 
