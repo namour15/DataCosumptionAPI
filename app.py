@@ -42,7 +42,7 @@ def get_indicators_data():
                 
                 if not rows:
                     return []
-                ##d
+                ##de
                 pm1 = 0
                 pm2 = 0
                 pm10 = 0
