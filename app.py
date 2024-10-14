@@ -23,7 +23,6 @@ def get_db_connection():
     except Exception as ex:
         print(f"Error to reach connection: {ex}")
         return None
-
 @app.route('/get_indicators_data', methods=['GET'])
 def get_indicators_data():
 
