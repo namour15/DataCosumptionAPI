@@ -33,7 +33,7 @@ def get_indicators_data():
         try:
             indicators = []
             # Agregamos las tres tablas
-            tables = ['[dbo].[M_UPIITA]']
+            tables = ['[dbo].[M_UPIITA]', '[dbo].[M_ESCOM]', '[dbo].[M_CDA]']
             
             for table in tables:
                 cursor = connection.cursor()
