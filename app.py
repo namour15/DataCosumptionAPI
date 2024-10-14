@@ -26,10 +26,9 @@ def get_db_connection():
 
 
 
-@app.route('/get_indicators_data', methods=['POST'])
+@app.route('/get_indicators_data', methods=['GET'])
 def get_indicators_data():
     client_request = request.get_json()
-    date = client_request.get('date')
 
     connection = get_db_connection()
 
@@ -39,12 +38,7 @@ def get_indicators_data():
             for table in ['M_UPIITA', 'M_ESCOM', 'M_CDA']:
                 print(client_request)
                 cursor = connection.cursor()
-                query = ""
-                if date not in [None, "", []]:
-                    formatted_date = datetime.strptime(date,"%Y-%m-%d")
-                    query = f"SELECT ID, Fecha, PM_1, PM2_5, PM_10 FROM {table} WHERE Fecha = CONVERT(datetime,'{date}')" 
-                else:
-                    query = f"SELECT ID, Fecha, PM_1, PM2_5, PM_10 FROM {table} WHERE CAST(Fecha AS DATE) = (SELECT MAX(CAST(Fecha AS DATE))FROM M_UPIITA)"
+                query = f"SELECT ID, Fecha, PM_1, PM2_5, PM_10 FROM {table} ')" 
                 cursor.execute(query)
                 rows = cursor.fetchall()
                 
