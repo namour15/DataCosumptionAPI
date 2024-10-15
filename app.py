@@ -23,9 +23,12 @@ def get_db_connection():
     except Exception as ex:
         print(f"Error to reach connection: {ex}")
         return None
+    
 @app.route('/get_indicators_data', methods=['POST'])
 def get_indicators_data():
-
+    client_request = request.get_json()
+    date = client_request.get('date')
+    
     connection = get_db_connection()
 
     if connection:
@@ -36,8 +39,17 @@ def get_indicators_data():
             
             for table in tables:
                 cursor = connection.cursor()
-                query = f"SELECT ID, Fecha, PM_1, PM2_5, PM_10 FROM {table}"
-                cursor.execute(query)
+                
+                query = ""
+                
+                if date not in [None, "", []]:
+                    formatted_date = datetime.strptime(date,"%Y-%m-%d")
+                    query = f"SELECT ID, Fecha, PM_1, PM2_5, PM_10 FROM ? WHERE Fecha = CONVERT(datetime, ?)"
+                    cursor.execute(query,table,formatted_date)
+                else:
+                    query = f"SELECT ID, Fecha, PM_1, PM2_5, PM_10 FROM {tables} WHERE CAST(Fecha AS DATE) = (SELECT MAX(CAST(Fecha AS DATE))FROM {tables})"
+                    cursor.execute(query)
+                
                 rows = cursor.fetchall()
                 
                 if not rows:
