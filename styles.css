@@ -123,16 +123,16 @@
 
   .showcase .superpuesta {
     position: absolute; /* Establece la posición absoluta para que la imagen se pueda posicionar en relación con su contenedor padre */
-    top: 43%; /* Ajusta la posición superior según sea necesario */
-    left: 30%; /* Ajusta la posición izquierda según sea necesario */
+    top: 32%; /* Ajusta la posición superior según sea necesario */
+    left: 33%; /* Ajusta la posición izquierda según sea necesario */
     width: 560px; /* Ajusta el ancho de la imagen */
     height: auto; /* Ajusta la altura de la imagen de forma automática para mantener la proporción */
     z-index: auto; /* Asegura que la imagen superpuesta esté por encima del fondo */
   }
   .animated-marker1 {
     position: relative;
-    top: 6.5%;
-   left: 5%;
+    top: 8%;
+   left: 3.5%;
     /* width: 250px;
     height: 250px; */
     transform: translate(-50%, -50%); /* Centra el icono */
@@ -143,8 +143,8 @@
   .animated-marker2 {
     position: absolute;
     flex: auto;
-    top: -8.5%;
-    left: -1%;
+    top: 8%;
+    left: -3%;
     /* width: 250px;
     height: 250px; */
     transform: translate(-50%, -50%); /* Centra el icono */
@@ -153,8 +153,8 @@
   }
   .animated-marker3 {
     position: absolute;
-    top: -20px;
-    left: 48%;
+    top: -10px;
+    left: 47%;
     /* width: 250px;
     height: 250px; */
     transform: translate(-50%, -50%); /* Centra el icono */
