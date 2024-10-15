@@ -350,7 +350,7 @@
       // Realizar la solicitud GET
       fetch('https://air-clear-api-awarh8gfencebcax.eastus2-01.azurewebsites.net/get_indicators_data', {
         method: 'POST',
-        body: JSON.stringify({}),
+        body: JSON.stringify({"date":""}),
         headers: {
           'Content-Type': 'application/json'
         }
