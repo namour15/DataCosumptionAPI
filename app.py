@@ -93,37 +93,117 @@ def get_indicators_data():
         return jsonify({'error': 'Can\'t connect to DB.'})
 
 
-@app.route('/get_historical_data', methods=['GET'])
-def get_historical_data():
+@app.route('/get_historical_data_upiita', methods=['GET'])
+def get_historical_data_upiita():
     connection = get_db_connection()
 
     if connection:
         try:
             historical_data = []
-            # Agregamos las tres tablas
-            tables = ['[dbo].[M_UPIITA]', '[dbo].[M_ESCOM]', '[dbo].[M_CDA]']
             
-            for table in tables:
-                cursor = connection.cursor()
+            cursor = connection.cursor()
+            
+            query = f"SELECT MONTH(Fecha) AS Month, AVG(CAST(PM_1 AS DECIMAL(10, 2))) AS PM_1, AVG(CAST(PM2_5 AS DECIMAL(10, 2))) AS PM2_5, AVG(CAST(PM_10 AS DECIMAL(10, 2))) AS PM_1 FROM [dbo].[M_UPIITA] GROUP BY MONTH(Fecha) ORDER BY Month"
+            
+            cursor.execute(query)  
+            rows = cursor.fetchall()
+            
+            if not rows:
+                continue
+            
+            for row in rows:
+                data = {
+                    'MONTH': row[0],
+                    'PM1': row[1],
+                    'PM25': row[2],
+                    'PM10': row[3]
+                }
                 
-                query = f"SELECT MONTH(Fecha) AS Month, AVG(CAST(PM_1 AS DECIMAL(10, 2))) AS PM_1, AVG(CAST(PM2_5 AS DECIMAL(10, 2))) AS PM2_5, AVG(CAST(PM_10 AS DECIMAL(10, 2))) AS PM_1 FROM {table} GROUP BY MONTH(Fecha) ORDER BY Month"
-                
-                cursor.execute(query)  
-                rows = cursor.fetchall()
-                
-                if not rows:
-                    continue
-                
-                for row in rows:
-                    data = {
-                        'SOURCE': table,
-                        'MONTH': row[0],
-                        'PM1': row[1],
-                        'PM25': row[2],
-                        'PM10': row[3]
-                    }
+                historical_data.append(data)
                     
-                    historical_data.append(data)
+            return jsonify(historical_data)
+
+        except Exception as ex:
+            print(f"Error to execute SQL Query: {ex}")
+            return jsonify({'error': f'Error to execute SQL Query: {ex}'})
+        
+        finally:
+            connection.close()
+            print("Connection to DB closed.")
+    
+    else:
+        print("Can't connect to DB.")
+        return jsonify({'error': 'Can\'t connect to DB.'})
+    
+@app.route('/get_historical_data_escom', methods=['GET'])
+def get_historical_data_escom():
+    connection = get_db_connection()
+
+    if connection:
+        try:
+            historical_data = []
+            
+            cursor = connection.cursor()
+            
+            query = f"SELECT MONTH(Fecha) AS Month, AVG(CAST(PM_1 AS DECIMAL(10, 2))) AS PM_1, AVG(CAST(PM2_5 AS DECIMAL(10, 2))) AS PM2_5, AVG(CAST(PM_10 AS DECIMAL(10, 2))) AS PM_1 FROM [dbo].[M_ESCOM] GROUP BY MONTH(Fecha) ORDER BY Month"
+            
+            cursor.execute(query)  
+            rows = cursor.fetchall()
+            
+            if not rows:
+                continue
+            
+            for row in rows:
+                data = {
+                    'MONTH': row[0],
+                    'PM1': row[1],
+                    'PM25': row[2],
+                    'PM10': row[3]
+                }
+                
+                historical_data.append(data)
+                    
+            return jsonify(historical_data)
+
+        except Exception as ex:
+            print(f"Error to execute SQL Query: {ex}")
+            return jsonify({'error': f'Error to execute SQL Query: {ex}'})
+        
+        finally:
+            connection.close()
+            print("Connection to DB closed.")
+    
+    else:
+        print("Can't connect to DB.")
+        return jsonify({'error': 'Can\'t connect to DB.'})
+    
+@app.route('/get_historical_data_cda', methods=['GET'])
+def get_historical_data_cda():
+    connection = get_db_connection()
+
+    if connection:
+        try:
+            historical_data = []
+            
+            cursor = connection.cursor()
+            
+            query = f"SELECT MONTH(Fecha) AS Month, AVG(CAST(PM_1 AS DECIMAL(10, 2))) AS PM_1, AVG(CAST(PM2_5 AS DECIMAL(10, 2))) AS PM2_5, AVG(CAST(PM_10 AS DECIMAL(10, 2))) AS PM_1 FROM [dbo].[M_CDA] GROUP BY MONTH(Fecha) ORDER BY Month"
+            
+            cursor.execute(query)  
+            rows = cursor.fetchall()
+            
+            if not rows:
+                continue
+            
+            for row in rows:
+                data = {
+                    'MONTH': row[0],
+                    'PM1': row[1],
+                    'PM25': row[2],
+                    'PM10': row[3]
+                }
+                
+                historical_data.append(data)
                     
             return jsonify(historical_data)
 
