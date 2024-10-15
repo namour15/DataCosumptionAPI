@@ -106,7 +106,7 @@ def get_historical_data():
             for table in tables:
                 cursor = connection.cursor()
                 
-                query = "SELECT MONTH(Fecha) AS Month, AVG(CAST(PM_1 AS DECIMAL(10, 2))) AS PM_1, AVG(CAST(PM2_5 AS DECIMAL(10, 2))) AS PM2_5, AVG(CAST(PM_10 AS DECIMAL(10, 2))) AS PM_1 FROM [dbo].[M_ESCOM] GROUP BY MONTH(Fecha) ORDER BY Month"
+                query = f"SELECT MONTH(Fecha) AS Month, AVG(CAST(PM_1 AS DECIMAL(10, 2))) AS PM_1, AVG(CAST(PM2_5 AS DECIMAL(10, 2))) AS PM2_5, AVG(CAST(PM_10 AS DECIMAL(10, 2))) AS PM_1 FROM {table} GROUP BY MONTH(Fecha) ORDER BY Month"
                 
                 cursor.execute(query)  
                 rows = cursor.fetchall()
