@@ -13,6 +13,8 @@
     color: #1e272e;
     color: #5e2323;
     font-size: 16px;
+    flex-wrap: wrap;
+    
   }
 
   a {
@@ -26,8 +28,11 @@
   }
 
   .container {
-    width: 90%;
+    width: 100%;
     margin: auto;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Ajusta automáticamente las columnas */
+  gap: 20px;
+  flex-wrap: wrap;
   }
 
   /* Navigation */
@@ -118,14 +123,14 @@
 
   .showcase .superpuesta {
     position: absolute; /* Establece la posición absoluta para que la imagen se pueda posicionar en relación con su contenedor padre */
-    top: 32.5%; /* Ajusta la posición superior según sea necesario */
-    left: 33.5%; /* Ajusta la posición izquierda según sea necesario */
-    width: 580px; /* Ajusta el ancho de la imagen */
+    top: 43%; /* Ajusta la posición superior según sea necesario */
+    left: 30%; /* Ajusta la posición izquierda según sea necesario */
+    width: 560px; /* Ajusta el ancho de la imagen */
     height: auto; /* Ajusta la altura de la imagen de forma automática para mantener la proporción */
-    z-index: 2; /* Asegura que la imagen superpuesta esté por encima del fondo */
+    z-index: auto; /* Asegura que la imagen superpuesta esté por encima del fondo */
   }
   .animated-marker1 {
-    position: absolute;
+    position: relative;
     top: 6.5%;
    left: 5%;
     /* width: 250px;
@@ -137,6 +142,7 @@
 
   .animated-marker2 {
     position: absolute;
+    flex: auto;
     top: -8.5%;
     left: -1%;
     /* width: 250px;
@@ -348,16 +354,25 @@
 .cards-container {
   display: flex;
   flex-wrap: wrap;
+  weight: wrap;
   justify-content: space-between;
+  box-shadow: 0px 0px 20px 10px rgba(255, 215, 0, 0.8); /* Sombra amarilla alrededor */
+  transition: box-shadow 0.3s ease;
 }
 
 .card {
   flex: 1 1 calc(50% - 20px);
   margin: 10px;
+  height: auto;
   text-align: center;
+  box-shadow: 0px 0px 20px 10px rgba(255, 215, 0, 0.8); /* Sombra amarilla alrededor */
+  transition: box-shadow 0.3s ease;
 }
 
-
+img {
+  max-width: 100%; /* La imagen nunca será más ancha que su contenedor */
+  height: auto; /* Mantiene la proporción */
+}
 
 .card img {
   max-width: 100%;
@@ -485,7 +500,8 @@
 
     .footer-links .footer-container ul {
       text-align: center;
-
-      
     }
+
+ 
+
   }
