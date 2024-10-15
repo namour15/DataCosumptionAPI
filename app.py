@@ -109,7 +109,7 @@ def get_historical_data_upiita():
             rows = cursor.fetchall()
             
             if not rows:
-                continue
+                return []
             
             for row in rows:
                 data = {
@@ -151,7 +151,7 @@ def get_historical_data_escom():
             rows = cursor.fetchall()
             
             if not rows:
-                continue
+                return []
             
             for row in rows:
                 data = {
@@ -193,7 +193,7 @@ def get_historical_data_cda():
             rows = cursor.fetchall()
             
             if not rows:
-                continue
+                return []
             
             for row in rows:
                 data = {
