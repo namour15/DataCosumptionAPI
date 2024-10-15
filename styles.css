@@ -338,7 +338,10 @@
   height: 500px; /* Ajusta esta altura según sea necesario */
 }
 
-
+#chart_div3 {
+  width: 120%; /* Ajusta el ancho del gráfico dentro de su contenedor */
+  height: 500px; /* Ajusta esta altura según sea necesario */
+}
 
 
 /* Estilos para las tarjetas de noticias */

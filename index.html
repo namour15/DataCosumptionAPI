@@ -114,7 +114,6 @@
   </div>
 
 
-
   <div class="container">
     <div class="column">
       <div class="donut-set">
@@ -181,6 +180,13 @@
     </div>
 
   </div>
+
+  <!-- Aligned div -->
+  <div class="container">
+    <label for="startDate">Fecha de consulta:</label>
+    <input type="date" id="Date" name="datemin" min="2024-02-26" max="2024-06-30">
+    <button onclick="updateChart()">Consultar</button>
+  </div>
   </section>
 
   <!-- Sección del Gráfico y Descripción -->
@@ -188,13 +194,6 @@
 
   <section id="statistics">
     <div>
-      <label for="startDate">Fecha de inicio:</label>
-      <input type="date" id="startDate" value="2024-02-13">
-
-      <label for="endDate">Fecha de fin:</label>
-      <input type="date" id="endDate" value="2024-07-30">
-
-      <button onclick="updateChart()">Actualizar</button>
       <div class="container">
         <div class="chart-container">
           <div id="chart_div"></div>
@@ -238,7 +237,6 @@
   <section>
     <div class="container">
       <div class="chart-container">
-        <div id="chart_div"></div>
         <div class="description-section chart-section">
           <h3>Calidad del Aire Registrada durante los Últimos 6 Meses en CDA</h3>
           <p>Esta gráfica presenta la calidad del aire registrada en el Centro de Desarrollo Aeroespacial (CDA) durante
@@ -246,9 +244,9 @@
             partir de mediciones continuas en diferentes momentos. Las fluctuaciones en los datos reflejan la
             variabilidad de la calidad del aire en esta área, proporcionando información valiosa sobre las condiciones
             ambientales y su posible influencia en la salud de los trabajadores y la comunidad circundante.
-
           </p>
         </div>
+        <div id="chart_div3"></div>
       </div>
     </div>
 
@@ -350,7 +348,7 @@
       // Realizar la solicitud GET
       fetch('https://air-clear-api-awarh8gfencebcax.eastus2-01.azurewebsites.net/get_indicators_data', {
         method: 'POST',
-        body: JSON.stringify({"date":""}),
+        body: JSON.stringify({ "date": "" }),
         headers: {
           'Content-Type': 'application/json'
         }
@@ -574,102 +572,299 @@
         initializeChart('pm25-3', dataPM25_CDA, options);
         initializeChart('pm10-3', dataPM10_CDA, options);
       }
+
+      function updateChart() {
+        const dataDict = {};
+        const data_PM1 = {};
+        const data_PM25 = {};
+        const data_PM10 = {};
+        // Realizar la solicitud GET
+        fetch('https://air-clear-api-awarh8gfencebcax.eastus2-01.azurewebsites.net/get_indicators_data', {
+          method: 'POST',
+          body: JSON.stringify({ "date": document.getElementById('Date').value }),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+          .then(response => response.json())
+          .then(data => {
+            // Mostrar el JSON original en la consola
+            console.log('JSON original recibido:', data);
+
+            // Procesar los datos recibidos
+            data.forEach(item => {
+              // Aquí actualizamos el diccionario con los valores recibidos
+              dataDict[item.SOURCE] = {
+                "PM1": item.PM1,
+                "PM10": item.PM10,
+                "PM25": item.PM25
+              };
+            });
+
+            data_PM1['UPIITA'] = dataDict['[dbo].[M_UPIITA]'].PM1;
+            data_PM25['UPIITA'] = dataDict['[dbo].[M_UPIITA]'].PM25;
+            data_PM10['UPIITA'] = dataDict['[dbo].[M_UPIITA]'].PM10;
+
+            data_PM1['ESCOM'] = dataDict['[dbo].[M_ESCOM]'].PM1;
+            data_PM25['ESCOM'] = dataDict['[dbo].[M_ESCOM]'].PM25;
+            data_PM10['ESCOM'] = dataDict['[dbo].[M_ESCOM]'].PM10;
+
+            data_PM1['CDA'] = dataDict['[dbo].[M_CDA]'].PM1;
+            data_PM25['CDA'] = dataDict['[dbo].[M_CDA]'].PM25;
+            data_PM10['CDA'] = dataDict['[dbo].[M_CDA]'].PM10;
+
+            // Llamar a la función para dibujar los gráficos
+            dibujar(data_PM1, data_PM10, data_PM25);
+
+            //Llamar a la función para iluminar las recomendaciones
+            aplicarRecomendacion(data_PM1);
+
+            console.log('Hola');
+          })
+          .catch(error => console.error('Error:', error));
+        function getBackgroundColor(pmValue) {
+          // Asigna colores según los rangos de PM
+          if (pmValue < 25) {
+            return '#5cb85c'; // Verde
+          } else if (pmValue >= 25 && pmValue <= 30) {
+            return '#f0ad4e'; // Naranja
+          } else if (pmValue > 30 && pmValue <= 50) {
+            return '#5bc0de'; // Azul
+          } else {
+            return '#d9534f'; // Rojo
+          }
+        }
+
+        function dibujar(data_pm1, data_pm10, data_pm2) {
+          // Gráfico de PM1 - UPIITA
+          const dataPM1 = {
+            datasets: [{
+              data: [data_pm1['UPIITA'], 100 - data_pm1['UPIITA']], // Niveles de PM1
+              backgroundColor: [getBackgroundColor(data_pm1['UPIITA']), '#d3d3d3']
+            }],
+            labels: ['PM1', '']
+          };
+
+          // Gráfico de PM2.5 - UPIITA
+          const dataPM25 = {
+            datasets: [{
+              data: [data_pm2['UPIITA'], 100 - data_pm2['UPIITA']], // Niveles de PM2.5
+              backgroundColor: [getBackgroundColor(data_pm2['UPIITA']), '#d3d3d3']
+            }],
+            labels: ['PM2.5', '']
+          };
+
+          // Gráfico de PM10 - UPIITA
+          const dataPM10 = {
+            datasets: [{
+              data: [data_pm10['UPIITA'], 100 - data_pm10['UPIITA']], // Niveles de PM10
+              backgroundColor: [getBackgroundColor(data_pm10['UPIITA']), '#d3d3d3']
+            }],
+            labels: ['PM10', '']
+          };
+
+          // Gráfico de PM1 - ESCOM
+          const dataPM1_ES = {
+            datasets: [{
+              data: [data_pm1['ESCOM'], 100 - data_pm1['ESCOM']], // Niveles de PM1
+              backgroundColor: [getBackgroundColor(data_pm1['ESCOM']), '#d3d3d3']
+            }],
+            labels: ['PM1', '']
+          };
+
+          // Gráfico de PM2.5 - ESCOM
+          const dataPM25_ES = {
+            datasets: [{
+              data: [data_pm2['ESCOM'], 100 - data_pm2['ESCOM']], // Niveles de PM2.5
+              backgroundColor: [getBackgroundColor(data_pm2['ESCOM']), '#d3d3d3']
+            }],
+            labels: ['PM2.5', '']
+          };
+
+          // Gráfico de PM10 - ESCOM
+          const dataPM10_ES = {
+            datasets: [{
+              data: [data_pm10['ESCOM'], 100 - data_pm10['ESCOM']], // Niveles de PM10
+              backgroundColor: [getBackgroundColor(data_pm10['ESCOM']), '#d3d3d3']
+            }],
+            labels: ['PM10', '']
+          };
+
+          // Gráfico de PM1 - CDA
+          const dataPM1_CDA = {
+            datasets: [{
+              data: [data_pm1['CDA'], 100 - data_pm1['CDA']], // Niveles de PM1
+              backgroundColor: [getBackgroundColor(data_pm1['CDA']), '#d3d3d3']
+            }],
+            labels: ['PM1', '']
+          };
+
+          // Gráfico de PM2.5 - CDA
+          const dataPM25_CDA = {
+            datasets: [{
+              data: [data_pm2['CDA'], 100 - data_pm2['CDA']], // Niveles de PM2.5
+              backgroundColor: [getBackgroundColor(data_pm2['CDA']), '#d3d3d3']
+            }],
+            labels: ['PM2.5', '']
+          };
+
+          // Gráfico de PM10 - CDA
+          const dataPM10_CDA = {
+            datasets: [{
+              data: [data_pm10['CDA'], 100 - data_pm10['CDA']], // Niveles de PM10
+              backgroundColor: [getBackgroundColor(data_pm10['CDA']), '#d3d3d3']
+            }],
+            labels: ['PM10', '']
+          };
+
+          // Opciones comunes para los gráficos
+          const options = {
+            cutout: '70%',
+            plugins: {
+              legend: {
+                display: false
+              }
+            }
+          };
+
+          // Delete the previous charts
+          Chart.helpers.each(Chart.instances, function (instance) {
+            instance.destroy();
+          });
+
+          // Configuración de los gráficos usando Chart.js
+          // PM1 - Columna 1
+          new Chart(document.getElementById('pm1-1'), {
+            type: 'doughnut',
+            data: dataPM1,
+            options: options
+          });
+
+          // PM2.5 - Columna 1
+          new Chart(document.getElementById('pm25-1'), {
+            type: 'doughnut',
+            data: dataPM25,
+            options: options
+          });
+
+          // PM10 - Columna 1
+          new Chart(document.getElementById('pm10-1'), {
+            type: 'doughnut',
+            data: dataPM10,
+            options: options
+          });
+
+          // PM1 - Columna 2
+          new Chart(document.getElementById('pm1-2'), {
+            type: 'doughnut',
+            data: dataPM1_ES,
+            options: options
+          });
+
+          // PM2.5 - Columna 2
+          new Chart(document.getElementById('pm25-2'), {
+            type: 'doughnut',
+            data: dataPM25_ES,
+            options: options
+          });
+
+          // PM10 - Columna 2
+          new Chart(document.getElementById('pm10-2'), {
+            type: 'doughnut',
+            data: dataPM10_ES,
+            options: options
+          });
+
+          // PM1 - Columna 3
+          new Chart(document.getElementById('pm1-3'), {
+            type: 'doughnut',
+            data: dataPM1_CDA,
+            options: options
+          });
+
+          // PM2.5 - Columna 3
+          new Chart(document.getElementById('pm25-3'), {
+            type: 'doughnut',
+            data: dataPM25_CDA,
+            options: options
+          });
+
+          // PM10 - Columna 3
+          new Chart(document.getElementById('pm10-3'), {
+            type: 'doughnut',
+            data: dataPM10_CDA,
+            options: options
+          });
+
+
+
+          initializeChart('pm1-1', dataPM1, options);
+          initializeChart('pm25-1', dataPM25, options);
+          initializeChart('pm10-1', dataPM10, options);
+
+          initializeChart('pm1-2', dataPM1_ES, options);
+          initializeChart('pm25-2', dataPM25_ES, options);
+          initializeChart('pm10-2', dataPM10_ES, options);
+
+          initializeChart('pm1-3', dataPM1_CDA, options);
+          initializeChart('pm25-3', dataPM25_CDA, options);
+          initializeChart('pm10-3', dataPM10_CDA, options);
+        }
+      }
     </script>
 
 
     <title>Calidad del Aire en UPIITA</title>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-      // Carga la librería de Google Charts
+      // Load the Google Charts library
       google.charts.load('current', { 'packages': ['corechart'] });
       google.charts.setOnLoadCallback(drawChart);
 
-      // Función para generar datos aleatorios entre un rango dado
-      function randomData(min, max) {
-        return Math.random() * (max - min) + min;
-      }
+      // Initialize an empty array for the data
+      let elements = [];
 
-      // Función para generar datos simulados entre dos fechas
-      function generateRandomData(startDate, endDate) {
-        var data = [];
-        // Iterar sobre cada día entre las dos fechas
-        for (var d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
-          // Generar valores aleatorios para PM2.5, PM1 y PM10
-          var pm25 = randomData(5, 100); // µg/m³ (valores arbitrarios)
-          var pm1 = randomData(1, 50);
-          var pm10 = randomData(10, 150);
-
-          // Agregar el dato al array (fecha en formato "MMM dd, yyyy")
-          data.push([d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }), pm25, pm1, pm10]);
-        }
-
-        return data; // Devuelve los datos generados
-      }
-
-      // Función para dibujar la gráfica
+      // Function to draw the chart
       function drawChart() {
-        // Crear los datos del gráfico con fechas por defecto
-        var dataArray = [['Fecha', 'PM2.5', 'PM1', 'PM10']].concat(generateRandomData(new Date('2024-02-13'), new Date('2024-07-30')));
-        var data = google.visualization.arrayToDataTable(dataArray);
+        fetch('https://air-clear-api-awarh8gfencebcax.eastus2-01.azurewebsites.net/get_historical_data_upiita', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+          .then(response => response.json())
+          .then(data => {
+            // Process the received 
+            elements = [];
+            data.forEach(item => {
+              const date = new Date(2024, item.MONTH - 1, 1); // Month is 0-indexed in Date
+              elements.push([date, parseFloat(item.PM25), parseFloat(item.PM1), parseFloat(item.PM10)]);
+            });
 
-        // Opciones del gráfico
-        var options = {
-          title: 'Mediciones en UPIITA',
-          curveType: 'function', // Tipo de línea suavizada
-          legend: { position: 'top' },
-          vAxis: { title: 'µg/m³' }, // Eje Y con unidades de µg/m³
-          hAxis: { title: 'Fecha' }, // Eje X con fechas
-          pointSize: 3 // Tamaño de los puntos en la línea
-        };
+            // Create the data table for the chart
+            const dataArray = [['Fecha', 'PM2.5', 'PM1', 'PM10']].concat(elements);
+            const dataTable = google.visualization.arrayToDataTable(dataArray);
 
-        // Crear una instancia del gráfico de línea
-        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+            // Chart options
+            const options = {
+              title: 'Mediciones en UPIITA',
+              curveType: 'function',
+              legend: { position: 'top' },
+              vAxis: { title: 'µg/m³' },
+              hAxis: { title: 'Fecha' },
+              pointSize: 3
+            };
 
-        // Dibuja el gráfico con los datos y las opciones especificadas
-        chart.draw(data, options);
-      }
+            // Create a LineChart instance
+            const chart = new google.visualization.LineChart(document.getElementById('chart_div'));
 
-      // Función para actualizar la gráfica cuando cambien las fechas
-      function updateChart() {
-        // Obtén los valores de fecha seleccionados
-        var startDate = document.getElementById('startDate').value;
-        var endDate = document.getElementById('endDate').value;
-
-        // Si no hay fechas seleccionadas, usa las fechas predeterminadas
-        if (!startDate) startDate = '2024-02-13';
-        if (!endDate) endDate = '2024-07-30';
-
-        // Convertir a objetos Date
-        var start = new Date(startDate);
-        var end = new Date(endDate);
-
-        // Verifica que la fecha de inicio no sea posterior a la de fin
-        if (start > end) {
-          alert("La fecha de inicio no puede ser posterior a la fecha de fin.");
-          return;
-        }
-
-        // Crear los datos del gráfico con el nuevo rango de fechas
-        var dataArray = [['Fecha', 'PM2.5', 'PM1', 'PM10']].concat(generateRandomData(start, end));
-        var data = google.visualization.arrayToDataTable(dataArray);
-
-        // Opciones del gráfico
-        var options = {
-          title: 'Mediciones en UPIITA (actualizadas)',
-          curveType: 'function',
-          legend: { position: 'top' },
-          vAxis: { title: 'µg/m³' },
-          hAxis: { title: 'Fecha' },
-          pointSize: 3
-        };
-
-        // Crear una instancia del gráfico de línea
-        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-
-        // Dibuja el gráfico actualizado con las fechas seleccionadas
-        chart.draw(data, options);
+            // Draw the chart with the data and options specified
+            chart.draw(dataTable, options);
+          })
+          .catch(error => console.error('Error:', error));
       }
     </script>
+
 
     <title>Calidad del Aire en ESCOM</title>
     <!-- Incluye la librería de Google Charts -->
@@ -678,51 +873,43 @@
       google.charts.load('current', { 'packages': ['corechart'] });
       google.charts.setOnLoadCallback(drawChart);
 
-      // Función para generar datos aleatorios entre un rango dado
-      function randomData(min, max) {
-        return Math.random() * (max - min) + min;
-      }
-
-      // Función para generar datos simulados entre dos fechas
-      function generateRandomData() {
-        var data = [];
-        var startDate = new Date('2024-02-13'); // Fecha de inicio
-        var endDate = new Date('2024-07-30');   // Fecha de fin
-
-        // Iterar sobre cada día entre las dos fechas
-        for (var d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
-          // Generar valores aleatorios para PM2.5, PM1 y PM10
-          var pm25 = randomData(5, 100); // µg/m³ (valores arbitrarios)
-          var pm1 = randomData(1, 50);
-          var pm10 = randomData(10, 150);
-
-          // Agregar el dato al array (fecha en formato "MMM dd, yyyy")
-          data.push([d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }), pm25, pm1, pm10]);
-        }
-
-        return data; // Devuelve los datos generados
-      }
-
       function drawChart() {
-        // Crear los datos del gráfico
-        var dataArray = [['Fecha', 'PM2.5', 'PM1', 'PM10']].concat(generateRandomData());
-        var data = google.visualization.arrayToDataTable(dataArray);
+        fetch('https://air-clear-api-awarh8gfencebcax.eastus2-01.azurewebsites.net/get_historical_data_escom', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+          .then(response => response.json())
+          .then(data => {
+            // Process the received data
+            elements = [];
+            data.forEach(item => {
+              const date = new Date(2024, item.MONTH - 1, 1); // Month is 0-indexed in Date
+              elements.push([date, parseFloat(item.PM25), parseFloat(item.PM1), parseFloat(item.PM10)]);
+            });
 
-        // Opciones del gráfico
-        var options = {
-          title: 'Mediciones de PM2.5, PM1 y PM10 del 13 de febrero al 30 de julio',
-          curveType: 'function', // Tipo de línea suavizada
-          legend: { position: 'top' },
-          vAxis: { title: 'µg/m³' }, // Eje Y con unidades de µg/m³
-          hAxis: { title: 'Fecha' }, // Eje X con fechas
-          pointSize: 3 // Tamaño de los puntos en la línea
-        };
+            // Create the data table for the chart
+            const dataArray = [['Fecha', 'PM2.5', 'PM1', 'PM10']].concat(elements);
+            const dataTable = google.visualization.arrayToDataTable(dataArray);
 
-        // Crear una instancia del gráfico de línea
-        var chart = new google.visualization.LineChart(document.getElementById('chart_div2'));
+            // Chart options
+            const options = {
+              title: 'Mediciones en ESCOM',
+              curveType: 'function',
+              legend: { position: 'top' },
+              vAxis: { title: 'µg/m³' },
+              hAxis: { title: 'Fecha' },
+              pointSize: 3
+            };
 
-        // Dibuja el gráfico con los datos y las opciones especificadas
-        chart.draw(data, options);
+            // Create a LineChart instance
+            const chart = new google.visualization.LineChart(document.getElementById('chart_div2'));
+
+            // Draw the chart with the data and options specified
+            chart.draw(dataTable, options);
+          })
+          .catch(error => console.error('Error:', error));
       }
     </script>
     </script>
@@ -735,51 +922,43 @@
       google.charts.load('current', { 'packages': ['corechart'] });
       google.charts.setOnLoadCallback(drawChart);
 
-      // Función para generar datos aleatorios entre un rango dado
-      function randomData(min, max) {
-        return Math.random() * (max - min) + min;
-      }
-
-      // Función para generar datos simulados entre dos fechas
-      function generateRandomData() {
-        var data = [];
-        var startDate = new Date('2024-02-13'); // Fecha de inicio
-        var endDate = new Date('2024-07-30');   // Fecha de fin
-
-        // Iterar sobre cada día entre las dos fechas
-        for (var d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
-          // Generar valores aleatorios para PM2.5, PM1 y PM10
-          var pm25 = randomData(5, 100); // µg/m³ (valores arbitrarios)
-          var pm1 = randomData(1, 50);
-          var pm10 = randomData(10, 150);
-
-          // Agregar el dato al array (fecha en formato "MMM dd, yyyy")
-          data.push([d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }), pm25, pm1, pm10]);
-        }
-
-        return data; // Devuelve los datos generados
-      }
-
       function drawChart() {
-        // Crear los datos del gráfico
-        var dataArray = [['Fecha', 'PM2.5', 'PM1', 'PM10']].concat(generateRandomData());
-        var data = google.visualization.arrayToDataTable(dataArray);
+        fetch('https://air-clear-api-awarh8gfencebcax.eastus2-01.azurewebsites.net/get_historical_data_cda', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+          .then(response => response.json())
+          .then(data => {
+            // Process the received data
+            elements = [];
+            data.forEach(item => {
+              const date = new Date(2024, item.MONTH - 1, 1); // Month is 0-indexed in Date
+              elements.push([date, parseFloat(item.PM25), parseFloat(item.PM1), parseFloat(item.PM10)]);
+            });
 
-        // Opciones del gráfico
-        var options = {
-          title: 'Mediciones en UPIITA',
-          curveType: 'function', // Tipo de línea suavizada
-          legend: { position: 'top' },
-          vAxis: { title: 'µg/m³' }, // Eje Y con unidades de µg/m³
-          hAxis: { title: 'Fecha' }, // Eje X con fechas
-          pointSize: 3 // Tamaño de los puntos en la línea
-        };
+            // Create the data table for the chart
+            const dataArray = [['Fecha', 'PM2.5', 'PM1', 'PM10']].concat(elements);
+            const dataTable = google.visualization.arrayToDataTable(dataArray);
 
-        // Crear una instancia del gráfico de línea
-        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+            // Chart options
+            const options = {
+              title: 'Mediciones en CDA',
+              curveType: 'function',
+              legend: { position: 'top' },
+              vAxis: { title: 'µg/m³' },
+              hAxis: { title: 'Fecha' },
+              pointSize: 3
+            };
 
-        // Dibuja el gráfico con los datos y las opciones especificadas
-        chart.draw(data, options);
+            // Create a LineChart instance
+            const chart = new google.visualization.LineChart(document.getElementById('chart_div3'));
+
+            // Draw the chart with the data and options specified
+            chart.draw(dataTable, options);
+          })
+          .catch(error => console.error('Error:', error));
       }
 
       function aplicarRecomendacion(data_PM1) {
