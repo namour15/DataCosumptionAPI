@@ -5,13 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Air Clear</title>
-  <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&display=swap" rel="stylesheet">
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-  <!-- Animate.css -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-  <!-- CUSTOM CSS -->
   <link rel="stylesheet" href="styles.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -32,11 +28,8 @@
 
 
   <div class="container">
-    <!-- Navigation -->
     <nav class="nav-main">
-      <!-- Brand -->
       <img src="imagenes/logo.png" alt="Air Clear Logo" class="nav-brand">
-      <!-- Left Nav -->
       <ul class="nav-menu">
         <li><a href="#home">Inicio</a></li>
         <li><a href="#monitoring">Monitoreo</a></li>
@@ -48,7 +41,6 @@
     </nav>
   </div>
 
-  <!-- SHOWCASE -->
   <div class="container">
     <section id="home">
       <header class="showcase">
@@ -90,6 +82,60 @@
   </header>
   </section>
 
+  <div class="main-container">
+    <div class="particle-charts">
+    </div>
+    
+    <div class="description-container">
+        <h2>Descripción del origen de las partículas</h2>
+
+        <div class="particle-info">
+            <p><strong>PM1:</strong> Estas partículas provienen principalmente de procesos de combustión, como el humo generado por los vehículos, la quema de combustibles fósiles en plantas industriales y las emisiones de calefacción. Al ser tan pequeñas, suelen generarse en fuentes donde hay altas temperaturas.</p>
+            <p><strong>PM2.5:</strong> Provienen de fuentes similares a las de las PM1, como los gases de escape de los vehículos, la quema de madera, el humo de fábricas y las chimeneas, así como de reacciones químicas en la atmósfera. También pueden formarse a partir de compuestos como los sulfatos y nitratos.</p>
+            <p><strong>PM10:</strong> Las partículas más grandes suelen tener su origen en el polvo levantado por el tráfico, actividades de construcción, erupciones volcánicas, el polen y otras partículas generadas por el movimiento del viento sobre superficies secas.</p>
+        </div>
+
+        <h3>Clasificación de calidad del aire</h3>
+        <div class="quality-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Categoría</th>
+                        <th>PM1 (µg/m³)</th>
+                        <th>PM2.5 (µg/m³)</th>
+                        <th>PM10 (µg/m³)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="good">
+                        <td>Buena (Verde)</td>
+                        <td>0-10</td>
+                        <td>0-12</td>
+                        <td>0-54</td>
+                    </tr>
+                    <tr class="acceptable">
+                        <td>Aceptable (Amarillo)</td>
+                        <td>10-15</td>
+                        <td>12.1-35.4</td>
+                        <td>55-154</td>
+                    </tr>
+                    <tr class="regular">
+                        <td>Regular (Azul)</td>
+                        <td>15-20</td>
+                        <td>35.5-55.4</td>
+                        <td>155-254</td>
+                    </tr>
+                    <tr class="bad">
+                        <td>Mala (Rojo)</td>
+                        <td>&gt; 20</td>
+                        <td>&gt; 55.5</td>
+                        <td>&gt; 254</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
   <div class="container">
     <section id="monitoring">
@@ -181,7 +227,7 @@
 
   </div>
 
-  <!-- Aligned div -->
+
   <div class="container">
     <label for="startDate">Fecha de consulta:</label>
     <input type="date" id="Date" name="datemin" min="2024-02-26" max="2024-06-30">
@@ -189,8 +235,9 @@
   </div>
   </section>
 
-  <!-- Sección del Gráfico y Descripción -->
 
+  
+ 
 
   <section id="statistics">
     <div>
@@ -254,7 +301,6 @@
 
 
 
-  <!-- NEWS CARDS -->
   <section id="recommendations">
     <div class="news-cards">
       <div class="container">
@@ -281,10 +327,6 @@
     </div>
 
 
-
-
-
-    <!-- Footer Links -->
     <section id="contact">
       <div class="footer-links">
         <div class="footer-container">
@@ -335,7 +377,7 @@
       </div>
       </div>
     </section>
-    <!-- Scroll Reveal -->
+ 
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="main.js"></script>
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
@@ -345,7 +387,7 @@
       const data_PM1 = {};
       const data_PM25 = {};
       const data_PM10 = {};
-      // Realizar la solicitud GET
+  
       fetch('https://air-clear-api-awarh8gfencebcax.eastus2-01.azurewebsites.net/get_indicators_data', {
         method: 'POST',
         body: JSON.stringify({ "date": "" }),
@@ -355,12 +397,10 @@
       })
         .then(response => response.json())
         .then(data => {
-          // Mostrar el JSON original en la consola
           console.log('JSON original recibido:', data);
 
-          // Procesar los datos recibidos
+  
           data.forEach(item => {
-            // Aquí actualizamos el diccionario con los valores recibidos
             dataDict[item.SOURCE] = {
               "PM1": item.PM1,
               "PM10": item.PM10,
@@ -380,111 +420,101 @@
           data_PM25['CDA'] = dataDict['[dbo].[M_CDA]'].PM25;
           data_PM10['CDA'] = dataDict['[dbo].[M_CDA]'].PM10;
 
-          // Llamar a la función para dibujar los gráficos
           dibujar(data_PM1, data_PM10, data_PM25);
-
-          //Llamar a la función para iluminar las recomendaciones
           aplicarRecomendacion(data_PM1);
 
           console.log('Hola');
         })
         .catch(error => console.error('Error:', error));
       function getBackgroundColor(pmValue) {
-        // Asigna colores según los rangos de PM
+
         if (pmValue < 25) {
-          return '#5cb85c'; // Verde
+          return '#5cb85c'; 
         } else if (pmValue >= 25 && pmValue <= 30) {
-          return '#f0ad4e'; // Naranja
+          return '#f0ad4e'; 
         } else if (pmValue > 30 && pmValue <= 50) {
-          return '#5bc0de'; // Azul
+          return '#5bc0de'; 
         } else {
-          return '#d9534f'; // Rojo
+          return '#d9534f'; 
         }
       }
 
       function dibujar(data_pm1, data_pm10, data_pm2) {
-        // Gráfico de PM1 - UPIITA
         const dataPM1 = {
           datasets: [{
-            data: [data_pm1['UPIITA'], 100 - data_pm1['UPIITA']], // Niveles de PM1
+            data: [data_pm1['UPIITA'], 100 - data_pm1['UPIITA']], 
             backgroundColor: [getBackgroundColor(data_pm1['UPIITA']), '#d3d3d3']
           }],
           labels: ['PM1', '']
         };
 
-        // Gráfico de PM2.5 - UPIITA
+   
         const dataPM25 = {
           datasets: [{
-            data: [data_pm2['UPIITA'], 100 - data_pm2['UPIITA']], // Niveles de PM2.5
+            data: [data_pm2['UPIITA'], 100 - data_pm2['UPIITA']], 
             backgroundColor: [getBackgroundColor(data_pm2['UPIITA']), '#d3d3d3']
           }],
           labels: ['PM2.5', '']
         };
 
-        // Gráfico de PM10 - UPIITA
         const dataPM10 = {
           datasets: [{
-            data: [data_pm10['UPIITA'], 100 - data_pm10['UPIITA']], // Niveles de PM10
+            data: [data_pm10['UPIITA'], 100 - data_pm10['UPIITA']],
             backgroundColor: [getBackgroundColor(data_pm10['UPIITA']), '#d3d3d3']
           }],
           labels: ['PM10', '']
         };
 
-        // Gráfico de PM1 - ESCOM
         const dataPM1_ES = {
           datasets: [{
-            data: [data_pm1['ESCOM'], 100 - data_pm1['ESCOM']], // Niveles de PM1
+            data: [data_pm1['ESCOM'], 100 - data_pm1['ESCOM']], 
             backgroundColor: [getBackgroundColor(data_pm1['ESCOM']), '#d3d3d3']
           }],
           labels: ['PM1', '']
         };
 
-        // Gráfico de PM2.5 - ESCOM
         const dataPM25_ES = {
           datasets: [{
-            data: [data_pm2['ESCOM'], 100 - data_pm2['ESCOM']], // Niveles de PM2.5
+            data: [data_pm2['ESCOM'], 100 - data_pm2['ESCOM']], 
             backgroundColor: [getBackgroundColor(data_pm2['ESCOM']), '#d3d3d3']
           }],
           labels: ['PM2.5', '']
         };
 
-        // Gráfico de PM10 - ESCOM
         const dataPM10_ES = {
           datasets: [{
-            data: [data_pm10['ESCOM'], 100 - data_pm10['ESCOM']], // Niveles de PM10
+            data: [data_pm10['ESCOM'], 100 - data_pm10['ESCOM']],
             backgroundColor: [getBackgroundColor(data_pm10['ESCOM']), '#d3d3d3']
           }],
           labels: ['PM10', '']
         };
 
-        // Gráfico de PM1 - CDA
         const dataPM1_CDA = {
           datasets: [{
-            data: [data_pm1['CDA'], 100 - data_pm1['CDA']], // Niveles de PM1
+            data: [data_pm1['CDA'], 100 - data_pm1['CDA']], 
             backgroundColor: [getBackgroundColor(data_pm1['CDA']), '#d3d3d3']
           }],
           labels: ['PM1', '']
         };
 
-        // Gráfico de PM2.5 - CDA
+      
         const dataPM25_CDA = {
           datasets: [{
-            data: [data_pm2['CDA'], 100 - data_pm2['CDA']], // Niveles de PM2.5
+            data: [data_pm2['CDA'], 100 - data_pm2['CDA']],
             backgroundColor: [getBackgroundColor(data_pm2['CDA']), '#d3d3d3']
           }],
           labels: ['PM2.5', '']
         };
 
-        // Gráfico de PM10 - CDA
         const dataPM10_CDA = {
           datasets: [{
-            data: [data_pm10['CDA'], 100 - data_pm10['CDA']], // Niveles de PM10
+            data: [data_pm10['CDA'], 100 - data_pm10['CDA']], 
             backgroundColor: [getBackgroundColor(data_pm10['CDA']), '#d3d3d3']
           }],
           labels: ['PM10', '']
         };
 
-        // Opciones comunes para los gráficos
+       
         const options = {
           cutout: '70%',
           plugins: {
@@ -494,64 +524,55 @@
           }
         };
 
-        // Configuración de los gráficos usando Chart.js
-        // PM1 - Columna 1
         new Chart(document.getElementById('pm1-1'), {
           type: 'doughnut',
           data: dataPM1,
           options: options
         });
 
-        // PM2.5 - Columna 1
         new Chart(document.getElementById('pm25-1'), {
           type: 'doughnut',
           data: dataPM25,
           options: options
         });
 
-        // PM10 - Columna 1
         new Chart(document.getElementById('pm10-1'), {
           type: 'doughnut',
           data: dataPM10,
           options: options
         });
 
-        // PM1 - Columna 2
+
         new Chart(document.getElementById('pm1-2'), {
           type: 'doughnut',
           data: dataPM1_ES,
           options: options
         });
 
-        // PM2.5 - Columna 2
         new Chart(document.getElementById('pm25-2'), {
           type: 'doughnut',
           data: dataPM25_ES,
           options: options
         });
 
-        // PM10 - Columna 2
         new Chart(document.getElementById('pm10-2'), {
           type: 'doughnut',
           data: dataPM10_ES,
           options: options
         });
 
-        // PM1 - Columna 3
         new Chart(document.getElementById('pm1-3'), {
           type: 'doughnut',
           data: dataPM1_CDA,
           options: options
         });
 
-        // PM2.5 - Columna 3
         new Chart(document.getElementById('pm25-3'), {
           type: 'doughnut',
           data: dataPM25_CDA,
           options: options
         });
 
-        // PM10 - Columna 3
         new Chart(document.getElementById('pm10-3'), {
           type: 'doughnut',
           data: dataPM10_CDA,
@@ -578,7 +599,6 @@
         const data_PM1 = {};
         const data_PM25 = {};
         const data_PM10 = {};
-        // Realizar la solicitud GET
         fetch('https://air-clear-api-awarh8gfencebcax.eastus2-01.azurewebsites.net/get_indicators_data', {
           method: 'POST',
           body: JSON.stringify({ "date": document.getElementById('Date').value }),
@@ -588,12 +608,8 @@
         })
           .then(response => response.json())
           .then(data => {
-            // Mostrar el JSON original en la consola
             console.log('JSON original recibido:', data);
-
-            // Procesar los datos recibidos
             data.forEach(item => {
-              // Aquí actualizamos el diccionario con los valores recibidos
               dataDict[item.SOURCE] = {
                 "PM1": item.PM1,
                 "PM10": item.PM10,
@@ -612,112 +628,89 @@
             data_PM1['CDA'] = dataDict['[dbo].[M_CDA]'].PM1;
             data_PM25['CDA'] = dataDict['[dbo].[M_CDA]'].PM25;
             data_PM10['CDA'] = dataDict['[dbo].[M_CDA]'].PM10;
-
-            // Llamar a la función para dibujar los gráficos
             dibujar(data_PM1, data_PM10, data_PM25);
-
-            //Llamar a la función para iluminar las recomendaciones
             aplicarRecomendacion(data_PM1);
 
             console.log('Hola');
           })
           .catch(error => console.error('Error:', error));
         function getBackgroundColor(pmValue) {
-          // Asigna colores según los rangos de PM
           if (pmValue < 25) {
-            return '#5cb85c'; // Verde
+            return '#5cb85c'; 
           } else if (pmValue >= 25 && pmValue <= 30) {
-            return '#f0ad4e'; // Naranja
+            return '#f0ad4e'; 
           } else if (pmValue > 30 && pmValue <= 50) {
-            return '#5bc0de'; // Azul
+            return '#5bc0de'; 
           } else {
-            return '#d9534f'; // Rojo
+            return '#d9534f'; 
           }
         }
 
         function dibujar(data_pm1, data_pm10, data_pm2) {
-          // Gráfico de PM1 - UPIITA
           const dataPM1 = {
             datasets: [{
-              data: [data_pm1['UPIITA'], 100 - data_pm1['UPIITA']], // Niveles de PM1
+              data: [data_pm1['UPIITA'], 100 - data_pm1['UPIITA']],
               backgroundColor: [getBackgroundColor(data_pm1['UPIITA']), '#d3d3d3']
             }],
             labels: ['PM1', '']
           };
-
-          // Gráfico de PM2.5 - UPIITA
           const dataPM25 = {
             datasets: [{
-              data: [data_pm2['UPIITA'], 100 - data_pm2['UPIITA']], // Niveles de PM2.5
+              data: [data_pm2['UPIITA'], 100 - data_pm2['UPIITA']],
               backgroundColor: [getBackgroundColor(data_pm2['UPIITA']), '#d3d3d3']
             }],
             labels: ['PM2.5', '']
           };
-
-          // Gráfico de PM10 - UPIITA
           const dataPM10 = {
             datasets: [{
-              data: [data_pm10['UPIITA'], 100 - data_pm10['UPIITA']], // Niveles de PM10
+              data: [data_pm10['UPIITA'], 100 - data_pm10['UPIITA']], 
               backgroundColor: [getBackgroundColor(data_pm10['UPIITA']), '#d3d3d3']
             }],
             labels: ['PM10', '']
           };
-
-          // Gráfico de PM1 - ESCOM
           const dataPM1_ES = {
             datasets: [{
-              data: [data_pm1['ESCOM'], 100 - data_pm1['ESCOM']], // Niveles de PM1
+              data: [data_pm1['ESCOM'], 100 - data_pm1['ESCOM']], 
               backgroundColor: [getBackgroundColor(data_pm1['ESCOM']), '#d3d3d3']
             }],
             labels: ['PM1', '']
           };
-
-          // Gráfico de PM2.5 - ESCOM
           const dataPM25_ES = {
             datasets: [{
-              data: [data_pm2['ESCOM'], 100 - data_pm2['ESCOM']], // Niveles de PM2.5
+              data: [data_pm2['ESCOM'], 100 - data_pm2['ESCOM']], 
               backgroundColor: [getBackgroundColor(data_pm2['ESCOM']), '#d3d3d3']
             }],
             labels: ['PM2.5', '']
           };
-
-          // Gráfico de PM10 - ESCOM
           const dataPM10_ES = {
             datasets: [{
-              data: [data_pm10['ESCOM'], 100 - data_pm10['ESCOM']], // Niveles de PM10
+              data: [data_pm10['ESCOM'], 100 - data_pm10['ESCOM']], 
               backgroundColor: [getBackgroundColor(data_pm10['ESCOM']), '#d3d3d3']
             }],
             labels: ['PM10', '']
           };
 
-          // Gráfico de PM1 - CDA
           const dataPM1_CDA = {
             datasets: [{
-              data: [data_pm1['CDA'], 100 - data_pm1['CDA']], // Niveles de PM1
+              data: [data_pm1['CDA'], 100 - data_pm1['CDA']], 
               backgroundColor: [getBackgroundColor(data_pm1['CDA']), '#d3d3d3']
             }],
             labels: ['PM1', '']
           };
-
-          // Gráfico de PM2.5 - CDA
           const dataPM25_CDA = {
             datasets: [{
-              data: [data_pm2['CDA'], 100 - data_pm2['CDA']], // Niveles de PM2.5
+              data: [data_pm2['CDA'], 100 - data_pm2['CDA']], 
               backgroundColor: [getBackgroundColor(data_pm2['CDA']), '#d3d3d3']
             }],
             labels: ['PM2.5', '']
           };
-
-          // Gráfico de PM10 - CDA
           const dataPM10_CDA = {
             datasets: [{
-              data: [data_pm10['CDA'], 100 - data_pm10['CDA']], // Niveles de PM10
+              data: [data_pm10['CDA'], 100 - data_pm10['CDA']], 
               backgroundColor: [getBackgroundColor(data_pm10['CDA']), '#d3d3d3']
             }],
             labels: ['PM10', '']
           };
-
-          // Opciones comunes para los gráficos
           const options = {
             cutout: '70%',
             plugins: {
@@ -726,78 +719,54 @@
               }
             }
           };
-
-          // Delete the previous charts
           Chart.helpers.each(Chart.instances, function (instance) {
             instance.destroy();
           });
-
-          // Configuración de los gráficos usando Chart.js
-          // PM1 - Columna 1
           new Chart(document.getElementById('pm1-1'), {
             type: 'doughnut',
             data: dataPM1,
             options: options
           });
-
-          // PM2.5 - Columna 1
           new Chart(document.getElementById('pm25-1'), {
             type: 'doughnut',
             data: dataPM25,
             options: options
           });
-
-          // PM10 - Columna 1
           new Chart(document.getElementById('pm10-1'), {
             type: 'doughnut',
             data: dataPM10,
             options: options
           });
-
-          // PM1 - Columna 2
           new Chart(document.getElementById('pm1-2'), {
             type: 'doughnut',
             data: dataPM1_ES,
             options: options
           });
-
-          // PM2.5 - Columna 2
           new Chart(document.getElementById('pm25-2'), {
             type: 'doughnut',
             data: dataPM25_ES,
             options: options
           });
-
-          // PM10 - Columna 2
           new Chart(document.getElementById('pm10-2'), {
             type: 'doughnut',
             data: dataPM10_ES,
             options: options
           });
-
-          // PM1 - Columna 3
           new Chart(document.getElementById('pm1-3'), {
             type: 'doughnut',
             data: dataPM1_CDA,
             options: options
           });
-
-          // PM2.5 - Columna 3
           new Chart(document.getElementById('pm25-3'), {
             type: 'doughnut',
             data: dataPM25_CDA,
             options: options
           });
-
-          // PM10 - Columna 3
           new Chart(document.getElementById('pm10-3'), {
             type: 'doughnut',
             data: dataPM10_CDA,
             options: options
           });
-
-
-
           initializeChart('pm1-1', dataPM1, options);
           initializeChart('pm25-1', dataPM25, options);
           initializeChart('pm10-1', dataPM10, options);
@@ -813,18 +782,12 @@
       }
     </script>
 
-
     <title>Calidad del Aire en UPIITA</title>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-      // Load the Google Charts library
       google.charts.load('current', { 'packages': ['corechart'] });
       google.charts.setOnLoadCallback(drawChart);
-
-      // Initialize an empty array for the data
       let elements = [];
-
-      // Function to draw the chart
       function drawChart() {
         fetch('https://air-clear-api-awarh8gfencebcax.eastus2-01.azurewebsites.net/get_historical_data_upiita', {
           method: 'GET',
@@ -834,18 +797,13 @@
         })
           .then(response => response.json())
           .then(data => {
-            // Process the received 
             elements = [];
             data.forEach(item => {
-              const date = new Date(2024, item.MONTH - 1, 1); // Month is 0-indexed in Date
+              const date = new Date(2024, item.MONTH - 1, 1); 
               elements.push([date, parseFloat(item.PM25), parseFloat(item.PM1), parseFloat(item.PM10)]);
             });
-
-            // Create the data table for the chart
             const dataArray = [['Fecha', 'PM2.5', 'PM1', 'PM10']].concat(elements);
             const dataTable = google.visualization.arrayToDataTable(dataArray);
-
-            // Chart options
             const options = {
               title: 'Mediciones en UPIITA',
               curveType: 'function',
@@ -854,11 +812,7 @@
               hAxis: { title: 'Fecha' },
               pointSize: 3
             };
-
-            // Create a LineChart instance
             const chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-
-            // Draw the chart with the data and options specified
             chart.draw(dataTable, options);
           })
           .catch(error => console.error('Error:', error));
@@ -867,9 +821,7 @@
 
 
     <title>Calidad del Aire en ESCOM</title>
-    <!-- Incluye la librería de Google Charts -->
     <script type="text/javascript">
-      // Carga la librería de Google Charts
       google.charts.load('current', { 'packages': ['corechart'] });
       google.charts.setOnLoadCallback(drawChart);
 
@@ -882,18 +834,13 @@
         })
           .then(response => response.json())
           .then(data => {
-            // Process the received data
             elements = [];
             data.forEach(item => {
-              const date = new Date(2024, item.MONTH - 1, 1); // Month is 0-indexed in Date
+              const date = new Date(2024, item.MONTH - 1, 1); 
               elements.push([date, parseFloat(item.PM25), parseFloat(item.PM1), parseFloat(item.PM10)]);
             });
-
-            // Create the data table for the chart
             const dataArray = [['Fecha', 'PM2.5', 'PM1', 'PM10']].concat(elements);
             const dataTable = google.visualization.arrayToDataTable(dataArray);
-
-            // Chart options
             const options = {
               title: 'Mediciones en ESCOM',
               curveType: 'function',
@@ -902,11 +849,7 @@
               hAxis: { title: 'Fecha' },
               pointSize: 3
             };
-
-            // Create a LineChart instance
             const chart = new google.visualization.LineChart(document.getElementById('chart_div2'));
-
-            // Draw the chart with the data and options specified
             chart.draw(dataTable, options);
           })
           .catch(error => console.error('Error:', error));
@@ -918,7 +861,6 @@
     <title>Calidad del Aire en CDA</title>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-      // Carga la librería de Google Charts
       google.charts.load('current', { 'packages': ['corechart'] });
       google.charts.setOnLoadCallback(drawChart);
 
@@ -931,18 +873,13 @@
         })
           .then(response => response.json())
           .then(data => {
-            // Process the received data
             elements = [];
             data.forEach(item => {
-              const date = new Date(2024, item.MONTH - 1, 1); // Month is 0-indexed in Date
+              const date = new Date(2024, item.MONTH - 1, 1); 
               elements.push([date, parseFloat(item.PM25), parseFloat(item.PM1), parseFloat(item.PM10)]);
             });
-
-            // Create the data table for the chart
             const dataArray = [['Fecha', 'PM2.5', 'PM1', 'PM10']].concat(elements);
             const dataTable = google.visualization.arrayToDataTable(dataArray);
-
-            // Chart options
             const options = {
               title: 'Mediciones en CDA',
               curveType: 'function',
@@ -951,34 +888,25 @@
               hAxis: { title: 'Fecha' },
               pointSize: 3
             };
-
-            // Create a LineChart instance
             const chart = new google.visualization.LineChart(document.getElementById('chart_div3'));
-
-            // Draw the chart with the data and options specified
             chart.draw(dataTable, options);
           })
           .catch(error => console.error('Error:', error));
       }
 
       function aplicarRecomendacion(data_PM1) {
-        // Primero, elimina la clase 'highlight' de todas las recomendaciones
         const cards = document.querySelectorAll('.card');
         cards.forEach(card => card.classList.remove('highlight'));
-
-        // Luego, aplica la clase 'highlight' según el valor de PM
         let cardId = '';
         if (pmValue < 25) {
-          cardId = 'rec1'; // Recomendación para PM < 25
+          cardId = 'rec1'; 
         } else if (pmValue >= 25 && pmValue <= 30) {
-          cardId = 'rec2'; // Recomendación para PM entre 25 y 30
+          cardId = 'rec2'; 
         } else if (pmValue > 30 && pmValue <= 50) {
-          cardId = 'rec3'; // Recomendación para PM entre 30 y 50
+          cardId = 'rec3'; 
         } else {
-          cardId = 'rec4'; // Recomendación para PM > 50
+          cardId = 'rec4'; 
         }
-
-        // Agrega la clase 'highlight' a la recomendación correspondiente
         document.getElementById(cardId).classList.add('highlight');
       }
 

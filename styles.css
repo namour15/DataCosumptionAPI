@@ -1,4 +1,4 @@
-/* Global */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -8,8 +8,6 @@
   body {
     font-family: "Oswald", sans-serif;
     background-color: #ffffff;
-    /* Pattern from https://www.heropatterns.com/ */
-    /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='105' viewBox='0 0 80 105'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='death-star' fill='%23540606' fill-opacity='0.4'%3E%3Cpath d='M20 10a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V10zm15 35a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V45zM20 75a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V75zm30-65a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V10zm0 65a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V75zM35 10a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V10zM5 45a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V45zm0-35a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V10zm60 35a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V45zm0-35a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V10z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); */
     color: #1e272e;
     color: #5e2323;
     font-size: 16px;
@@ -30,12 +28,11 @@
   .container {
     width: 100%;
     margin: auto;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Ajusta automáticamente las columnas */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
   gap: 20px;
   flex-wrap: wrap;
   }
 
-  /* Navigation */
   .nav-main {
     font-size: 20px;
     display: flex;
@@ -47,7 +44,7 @@
     margin-bottom: 5px;
 
   }
-  /* imagen */
+
   .nav-brand {
     width: 150px;
   }
@@ -62,8 +59,7 @@
   border-radius: 15px;
   gap: 46px;
   align-items: end;
-  border-bottom: 2px solid #ccc; /* Agrega un borde inferior de 2px sólido de color gris claro */
-  /* margin-bottom: 20px; Ajusta el margen inferior para separar del contenido debajo */
+  border-bottom: 2px solid #ccc; 
 
  }
   .nav-main ul {
@@ -74,8 +70,6 @@
     padding: 10px;
   }
 
-
-  /* linea al poner el cursor*/
   .nav-main ul li a:hover {
     border-bottom: 5px solid #483e3b;
   }
@@ -91,7 +85,6 @@
 
   }
 
-  /* Responsive Button */
   .menu-btn {
     cursor: pointer;
     position: absolute;
@@ -100,9 +93,6 @@
     z-index: 2;
     display: none;
   }
-
-  /* SHOWCASE */
-
 
   .showcase {
     width: 100%;
@@ -119,46 +109,37 @@
     color: #a09d9d;
 
   }
-
-
   .showcase .superpuesta {
-    position: absolute; /* Establece la posición absoluta para que la imagen se pueda posicionar en relación con su contenedor padre */
-    top: 32%; /* Ajusta la posición superior según sea necesario */
-    left: 32%; /* Ajusta la posición izquierda según sea necesario */
-    width: 580px; /* Ajusta el ancho de la imagen */
-    height: auto; /* Ajusta la altura de la imagen de forma automática para mantener la proporción */
-    z-index: auto; /* Asegura que la imagen superpuesta esté por encima del fondo */
+    position: absolute; 
+    top: 32%; 
+    left: 32%; 
+    width: 580px; 
+    height: auto;
+    z-index: auto; 
   }
   .animated-marker1 {
     position: relative;
     top: 3%;
    left: 8%;
-    /* width: 250px;
-    height: 250px; */
-    transform: translate(-50%, -50%); /* Centra el icono */
-  z-index: 10; /* Asegura que el icono esté sobre la imagen */
+    transform: translate(-50%, -50%);
+  z-index: 10; 
 
   }
-
   .animated-marker2 {
     position: absolute;
     flex: auto;
     top: 5%;
     left: 1%;
-    /* width: 250px;
-    height: 250px; */
-    transform: translate(-50%, -50%); /* Centra el icono */
-  z-index: 10; /* Asegura que el icono esté sobre la imagen */
+    transform: translate(-50%, -50%); 
+  z-index: 10; 
 
   }
   .animated-marker3 {
     position: absolute;
     top: -20px;
     left: 50%;
-    /* width: 250px;
-    height: 250px; */
-    transform: translate(-50%, -50%); /* Centra el icono */
-  z-index: 10; /* Asegura que el icono esté sobre la imagen */
+    transform: translate(-50%, -50%); 
+  z-index: 10; 
 
   }
   .tooltip {
@@ -169,7 +150,6 @@
 
   .tooltip .tooltiptext {
     font-size: small;
-    /* visibility: hidden; */
     width: 160px;
     background-color: #555;
     color: #fff;
@@ -185,253 +165,264 @@
   .tooltip:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
-
-
   }
-/* Estilos para los gráficos de dona */
 .donut-container {
-  width: 100px; /* Ancho del contenedor */
-  height: 100px; /* Altura del contenedor */
-  margin: 10px auto; /* Margen exterior */
-  position: relative; /* Posición relativa para alinear el texto */
+  width: 100px; 
+  height: 100px; 
+  margin: 10px auto; 
+  position: relative; 
 }
-
-/* Estilos para los títulos generales */
 .general-title {
-  font-size: 16px; /* Tamaño de fuente para el título */
-  text-align: center; /* Alineación del texto */
-  margin-bottom: 5px; /* Margen inferior */
+  font-size: 16px;
+  text-align: center; 
+  margin-bottom: 5px; 
 }
-
-/* Estilos para las etiquetas de las donas */
 .donut-label {
-  position: absolute; /* Posición absoluta para alinear la etiqueta */
-  top: 50%; /* Alineación vertical */
-  left: 50%; /* Alineación horizontal */
-  transform: translate(-50%, -50%); /* Ajuste para centrar */
-  font-size: 14px; /* Tamaño de fuente para la etiqueta */
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  font-size: 14px; 
 }
-
-/* Estilos para las columnas */
 .column {
-  width: 30%; /* Ancho de cada columna */
-  display: inline-block; /* Mostrar en línea */
-  vertical-align: top; /* Alinear arriba */
-  margin: 10px; /* Margen exterior */
-  padding: 10px; /* Relleno interior */
-  background-color: #f0f0f0; /* Color de fondo */
-  border-radius: 8px; /* Borde redondeado */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  width: 30%; 
+  display: inline-block; 
+  vertical-align: top; 
+  margin: 10px; 
+  padding: 10px; 
+  background-color: #f0f0f0; 
+  border-radius: 8px; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
 }
-/* Estilos para los círculos de estado de calidad */
-/* Estilos para los círculos de estado de calidad */
 .quality-status-row {
   display: flex;
   justify-content:space-around;
   margin-bottom: 40px;
   margin-top: 10px;
 }
-
 .quality-status {
   display: flex;
   align-items: center;
  
 }
-
 .quality-circle {
   width: 20px;
   height: 20px;
   border-radius: 50%;
   margin-right: 5px;
 }
-
 .good {
-  background-color: #5cb85c; /* Verde para buena calidad */
+  background-color: #5cb85c; 
 }
-
 .acceptable {
-  background-color: #f0ad4e; /* Naranja para aceptable */
+  background-color: #f0ad4e; 
 }
-
 .regular {
-  background-color: #5bc0de; /* Azul para regular */
+  background-color: #5bc0de; 
 }
-
 .poor {
-  background-color: #d9534f; /* Rojo para mala calidad */
+  background-color: #d9534f; 
 }
-
-/* Estilos para el contenedor del gráfico y la descripción */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.particle-charts, .description-container {
+  width: 1200px;  
+  margin-bottom: 20px;
+}
+.description-container {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+}
+h2, h3 {
+  text-align: center;
+  color: #333;
+}
+.particle-info p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+.quality-table table {
+  width: 100%; 
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+.quality-table th, .quality-table td {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+.quality-table th {
+  background-color: #f4f4f4;
+  font-size: 14px;
+  color: #333;
+}
+.good {
+  background-color: #d4edda;
+  color: #155724;
+}
+.acceptable {
+  background-color: #fff3cd;
+  color: #856404;
+}
+.regular {
+  background-color: #cce5ff;
+  color: #004085;
+}
+.bad {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+tbody tr:hover {
+  background-color: #f1f1f1;
+}       
 .description-section {
-  font-family: 'Oswald', sans-serif; /* Cambiar la fuente si es necesario */
-  font-size: 20px; /* Ajustar el tamaño del texto principal */
-  line-height: 1.6; /* Ajustar el interlineado */
-  text-align: center; /* Centrar el texto */
-  margin-top: 20px; /* Separación superior */
-}
-
+  font-family: 'Oswald', sans-serif; 
+  font-size: 20px; 
+  line-height: 1.6; 
+  text-align: center; 
+  margin-top: 20px; 
+} 
 .description-section h3 {
-  margin-bottom: 15px; /* Separación entre el título y el texto secundario */
-  font-size: 28px; /* Tamaño del título */
+  margin-bottom: 15px;
+  font-size: 28px; 
 }
-
 .chart-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* Centrar contenido horizontalmente */
+  justify-content: center; 
   align-items: center;
   width: 95%;
  
 }
-
 .chart-section {
   flex: 1;
   padding: 10px;
   box-sizing: border-box;
-  text-align: center; /* Centrar el texto */
+  text-align: center; 
   width: 60%;
   margin-right: 3%;
 }
-
 #chart_div {
-  width: 71%; /* Ajusta el ancho del gráfico */
-  height: 80vh; /* Ajusta esta altura según sea necesario */
-  margin: 0 auto; /* Centra horizontalmente el gráfico */
+  width: 71%; 
+  height: 80vh;
+  margin: 0 auto; 
 }
-
-
 .container-chart {
   display: flex;
   flex-direction: row;
-  justify-content: space-between; /* Distribuye los elementos a los extremos */
-  align-items: center; /* Alinea los elementos arriba */
+  justify-content: space-between; 
+  align-items: center; 
   width: 85%;
   margin: 20px auto;
 }
-
 .text-section {
-  flex: 1; /* Toma el espacio restante */
+  flex: 1; 
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* Alinea el contenido a la izquierda */
+  justify-content: flex-start; 
 }
 .description-section2 {
   font-family: 'Oswald', sans-serif;
-  font-size: 20px; /* Ajustar el tamaño del texto principal */
-  line-height: 1.6; /* Ajustar el interlineado */
+  font-size: 20px; 
+  line-height: 1.6; 
   text-align: center; 
-  margin-right: 20px; /* Separación entre la descripción y el gráfico */
+  margin-right: 20px; 
 }
-
 .description-section2 h3 {
-  margin-bottom: 15px; /* Separación entre el título y el texto secundario */
+  margin-bottom: 15px; 
   font-size: 28px;
 }
-
 .chart-section2 {
-  width: 70%; /* Ancho del contenedor del gráfico */
+  width: 70%; 
   
 }
-
 #chart_div2 {
-  width: 120%; /* Ajusta el ancho del gráfico dentro de su contenedor */
-  height: 500px; /* Ajusta esta altura según sea necesario */
+  width: 120%; 
+  height: 500px; 
 }
-
 #chart_div3 {
-  width: 120%; /* Ajusta el ancho del gráfico dentro de su contenedor */
-  height: 500px; /* Ajusta esta altura según sea necesario */
+  width: 120%; 
+  height: 500px;
 }
-
-
-/* Estilos para las tarjetas de noticias */
 .news-cards {
   padding: 20px;
 }
-
 .container {
   max-width: 1200px;
   margin: 0 auto;
 }
-
 .cards-container {
   display: flex;
   flex-wrap: wrap;
   weight: wrap;
   justify-content: space-between;
-  box-shadow: 0px 0px 20px 10px rgba(255, 215, 0, 0.8); /* Sombra amarilla alrededor */
+  box-shadow: 0px 0px 20px 10px rgba(255, 215, 0, 0.8); 
   transition: box-shadow 0.3s ease;
 }
-
 .card {
   flex: 1 1 calc(50% - 20px);
   margin: 10px;
   height: auto;
   text-align: center;
-  box-shadow: 0px 0px 20px 10px rgba(255, 215, 0, 0.8); /* Sombra amarilla alrededor */
+  box-shadow: 0px 0px 20px 10px rgba(255, 215, 0, 0.8); 
   transition: box-shadow 0.3s ease;
 }
-
 img {
-  max-width: 100%; /* La imagen nunca será más ancha que su contenedor */
-  height: auto; /* Mantiene la proporción */
+  max-width: 100%; 
+  height: auto; 
 }
-
 .card img {
   max-width: 100%;
   height: auto;
   display: block;
   margin: 0 auto 10px;
 }
-
-  /* Links */
-/* Footer */
 .footer-links {
   background-color: #333;
   color: #fff;
   text-align: center;
   padding: 10px 0;
   margin-top: 40px;
-  font-size: 14px; /* Reduce font size */
+  font-size: 14px; 
 }
-
 .footer-links h3 {
   margin: 2px 0;
-  font-size: 16px; /* Reduce header font size */
+  font-size: 16px; 
 }
-
 .footer-links a {
   color: #fff;
   text-decoration: none;
   display: block;
   margin: 5px 0;
-  padding: 2px 0; /* Reduce padding */
+  padding: 2px 0; 
 }
-
 .footer-links a:hover {
   text-decoration: underline;
 }
-
 .footer-container {
   display: flex;
   justify-content: space-around;
   flex-wrap: nowrap;
   max-width: 900px;
   margin: 0 auto;
-  padding: 10px 20px; /* Reduce padding */
+  padding: 10px 20px;
 }
-
 .footer-container ul {
   list-style: none;
   padding: 0;
 }
-
 .footer-container li {
-  margin: 5px 0; /* Reduce margin */
+  margin: 5px 0; 
 }
 
-
-  /* Mobil */
   @media (max-width: 700px) {
     .menu-btn {
       display: block;
