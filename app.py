@@ -34,7 +34,7 @@ def get_indicators_data():
     if connection:
         try:
             indicators = []
-            # Agregamos las tres tablas
+         
             tables = ['[dbo].[M_UPIITA]', '[dbo].[M_ESCOM]', '[dbo].[M_CDA]']
             
             for table in tables:
@@ -52,7 +52,7 @@ def get_indicators_data():
                 rows = cursor.fetchall()
                 
                 if not rows:
-                    continue  # Si la tabla no tiene registros, pasa a la siguiente tabla
+                    continue  
 
                 pm1 = 0
                 pm2 = 0
@@ -63,7 +63,7 @@ def get_indicators_data():
                     pm2 += row[3]
                     pm10 += row[4]
 
-                # Calcular los promedios
+            
                 pm1_average = pm1 / len(rows)
                 pm2_average = pm2 / len(rows)
                 pm10_average = pm10 / len(rows)
